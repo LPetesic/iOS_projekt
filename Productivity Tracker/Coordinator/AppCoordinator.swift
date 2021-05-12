@@ -22,9 +22,17 @@ class AppCoordinator: AppCoordinatorProtocol {
     }
 
     func setStartScreen(in window: UIWindow?) {
-        let hc = HomeViewController(router: self)
+        let motivationController = MotivationViewController(router: self)
+        let overviewController = OverviewViewController(router: self)
+        let homeController = HomeViewController(router: self)
+        let activitiesController = ActivitiesViewController(router: self)
+        let settingsController = SettingsViewController(router: self)
 
-        hc.tabBarItem.image = UIImage(systemName: "house.circle.fill")
+        motivationController.tabBarItem.image = UIImage(systemName: "hands.sparkles.fill")
+        overviewController.tabBarItem.image = UIImage(systemName: "chart.pie.fill")
+        homeController.tabBarItem.image = UIImage(systemName: "house.circle.fill")
+        activitiesController.tabBarItem.image = UIImage(systemName: "list.bullet")
+        settingsController.tabBarItem.image = UIImage(systemName: "gearshape.fill")
 
 
         let tabbedController = UITabBarController()
@@ -32,8 +40,15 @@ class AppCoordinator: AppCoordinatorProtocol {
         tabbedController.tabBar.barTintColor = .black
         tabbedController.tabBar.tintColor = .white
 
-        tabbedController.viewControllers = [hc]
-        
+        tabbedController.viewControllers = [
+            motivationController,
+            overviewController,
+            homeController,
+            activitiesController,
+            settingsController
+        ]
+        tabbedController.selectedIndex = 2
+
         window?.rootViewController = tabbedController
         window?.makeKeyAndVisible()
 

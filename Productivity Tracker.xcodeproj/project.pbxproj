@@ -3,10 +3,14 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 51;
 	objects = {
 
 /* Begin PBXBuildFile section */
+		728077366ADA2B308E3C0BA0 /* ActivitiesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7280799B0B385475E2E1A51A /* ActivitiesViewController.swift */; };
+		7280789EB48A7D9F15DD7643 /* MotivationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72807D6EE4BE58362C400579 /* MotivationViewController.swift */; };
+		72807905F267C69539D692D7 /* OverviewViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 728077C3571B6A7AACCEE60E /* OverviewViewController.swift */; };
+		72807EC0818E5653456CC9C0 /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72807F4AAF1199E9FF75DBA2 /* SettingsViewController.swift */; };
 		8A2EC94D41ABFB926B243AD1 /* Pods_Productivity_Tracker.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 38CF94237607BA1F6AB0D99F /* Pods_Productivity_Tracker.framework */; };
 		F6B5AD09264C947C005B3CCC /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6B5AD08264C947C005B3CCC /* AppDelegate.swift */; };
 		F6B5AD0B264C947C005B3CCC /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6B5AD0A264C947C005B3CCC /* SceneDelegate.swift */; };
@@ -22,6 +26,10 @@
 /* Begin PBXFileReference section */
 		38CF94237607BA1F6AB0D99F /* Pods_Productivity_Tracker.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Productivity_Tracker.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		678F7923EE116254B419D0B1 /* Pods-Productivity Tracker.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Productivity Tracker.release.xcconfig"; path = "Target Support Files/Pods-Productivity Tracker/Pods-Productivity Tracker.release.xcconfig"; sourceTree = "<group>"; };
+		728077C3571B6A7AACCEE60E /* OverviewViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OverviewViewController.swift; sourceTree = "<group>"; };
+		7280799B0B385475E2E1A51A /* ActivitiesViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ActivitiesViewController.swift; sourceTree = "<group>"; };
+		72807D6EE4BE58362C400579 /* MotivationViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MotivationViewController.swift; sourceTree = "<group>"; };
+		72807F4AAF1199E9FF75DBA2 /* SettingsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
 		8107DE3F40E1BD3A8F63FAF8 /* Pods-Productivity Tracker.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Productivity Tracker.debug.xcconfig"; path = "Target Support Files/Pods-Productivity Tracker/Pods-Productivity Tracker.debug.xcconfig"; sourceTree = "<group>"; };
 		F6B5AD05264C947C005B3CCC /* Productivity Tracker.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Productivity Tracker.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		F6B5AD08264C947C005B3CCC /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -54,7 +62,6 @@
 				8107DE3F40E1BD3A8F63FAF8 /* Pods-Productivity Tracker.debug.xcconfig */,
 				678F7923EE116254B419D0B1 /* Pods-Productivity Tracker.release.xcconfig */,
 			);
-			name = Pods;
 			path = Pods;
 			sourceTree = "<group>";
 		};
@@ -113,6 +120,10 @@
 			isa = PBXGroup;
 			children = (
 				F6B5AD25264C96AA005B3CCC /* HomeViewController.swift */,
+				72807D6EE4BE58362C400579 /* MotivationViewController.swift */,
+				728077C3571B6A7AACCEE60E /* OverviewViewController.swift */,
+				7280799B0B385475E2E1A51A /* ActivitiesViewController.swift */,
+				72807F4AAF1199E9FF75DBA2 /* SettingsViewController.swift */,
 			);
 			path = ViewControllers;
 			sourceTree = "<group>";
@@ -237,6 +248,10 @@
 				F6B5AD13264C947C005B3CCC /* Productivity_Tracker.xcdatamodeld in Sources */,
 				F6B5AD0B264C947C005B3CCC /* SceneDelegate.swift in Sources */,
 				F6B5AD26264C96AA005B3CCC /* HomeViewController.swift in Sources */,
+				7280789EB48A7D9F15DD7643 /* MotivationViewController.swift in Sources */,
+				72807905F267C69539D692D7 /* OverviewViewController.swift in Sources */,
+				728077366ADA2B308E3C0BA0 /* ActivitiesViewController.swift in Sources */,
+				72807EC0818E5653456CC9C0 /* SettingsViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
