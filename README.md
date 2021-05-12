@@ -4,6 +4,9 @@
 https://www.figma.com/file/eHZosoJBExxkSum7slkAT0/Untitled?node-id=0%3A1
 
 https://paper.dropbox.com/doc/iOS-vjestina-FIVE-project-blueprint-B1rTQLN0KS06o2srhrjEc
+
+https://onlywei.github.io/explain-git-with-d3/
+
 ## opis
 
 Aplikacija prati aktivnosti kroz dane poput dnevnika. Omogućava intuitivan prikaz ukupnog zbroja/prosjeka/omjera kroz dane u kojima se neka aktivnost ili obaveza izvršila.
