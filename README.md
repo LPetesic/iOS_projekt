@@ -2,6 +2,7 @@
 
 # bitni linkovi 
 https://www.figma.com/file/eHZosoJBExxkSum7slkAT0/Untitled?node-id=0%3A1
+
 https://paper.dropbox.com/doc/iOS-vjestina-FIVE-project-blueprint-B1rTQLN0KS06o2srhrjEc
 ## opis
 
