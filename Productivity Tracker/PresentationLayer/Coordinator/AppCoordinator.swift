@@ -25,7 +25,8 @@ class AppCoordinator: AppCoordinatorProtocol {
         let motivationController = MotivationViewController(router: self)
         let overviewController = OverviewViewController(router: self)
         let homeController = HomeViewController(router: self)
-        let activitiesController = ActivitiesViewController(router: self)
+        let activitiesController = UINavigationController(rootViewController:  ActivitiesViewController(router: self))
+       
         let settingsController = SettingsViewController(router: self)
 
         motivationController.tabBarItem.image = UIImage(systemName: "hands.sparkles.fill")
