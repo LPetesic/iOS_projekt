@@ -46,6 +46,7 @@ class ActivitiesViewController: UIViewController, UIGestureRecognizerDelegate {
     func createActivity(name:String){
         let newActivity = ActivityItem(context:context)
         newActivity.name = name
+        newActivity.score = 0
         newActivity.createdAt = Date()
         
         do{
@@ -89,6 +90,7 @@ class ActivitiesViewController: UIViewController, UIGestureRecognizerDelegate {
         tableView.isEditing = !tableView.isEditing
         
     }
+    
 }
 
 
@@ -116,12 +118,7 @@ extension ActivitiesViewController: UITableViewDataSource{
         cell.textLabel?.text = (activitiesArray[indexPath.row]).name
         cell.textLabel?.textColor = .black
         cell.backgroundColor = .white
-        
-        if isEditing {
-           for cell in tableView.visibleCells {
-            
-           }
-         }
+      
         return cell
     }
 
@@ -139,5 +136,6 @@ extension ActivitiesViewController: UITableViewDataSource{
             tableView.deleteRows(at: [indexPath], with: .none)
         }
     }
+
 }
 

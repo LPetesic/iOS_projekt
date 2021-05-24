@@ -8,7 +8,13 @@
 
 /* Begin PBXBuildFile section */
 		6502931626550B1700EC5585 /* ActivitiesViewController+Design.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6502931526550B1700EC5585 /* ActivitiesViewController+Design.swift */; };
-		6519EA3D2654578900ECF84F /* ActivityCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6519EA3C2654578900ECF84F /* ActivityCell.swift */; };
+		6502931C26553CA200EC5585 /* ActivityUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6502931B26553CA200EC5585 /* ActivityUseCase.swift */; };
+		6502932026553D2000EC5585 /* ActivityRepositoryProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6502931F26553D2000EC5585 /* ActivityRepositoryProtocol.swift */; };
+		650293232655B0F700EC5585 /* ActivityDataRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 650293222655B0F700EC5585 /* ActivityDataRepository.swift */; };
+		650293262655B2A700EC5585 /* ActivityCoreDataSourceProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 650293252655B2A700EC5585 /* ActivityCoreDataSourceProtocol.swift */; };
+		650293292655B4F500EC5585 /* ActivityCoreDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 650293282655B4F500EC5585 /* ActivityCoreDataSource.swift */; };
+		6520D2F2265C35AB00F223F9 /* ActivityCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6520D2F1265C35AB00F223F9 /* ActivityCell.swift */; };
+		6520D2F9265C3ED000F223F9 /* ActivityCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6520D2F8265C3ED000F223F9 /* ActivityCollectionViewCell.swift */; };
 		654501222654671200F31431 /* Activity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 654501212654671200F31431 /* Activity.swift */; };
 		65C804432654F222008988F5 /* ActivityItem+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65C804412654F222008988F5 /* ActivityItem+CoreDataClass.swift */; };
 		65C804442654F222008988F5 /* ActivityItem+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65C804422654F222008988F5 /* ActivityItem+CoreDataProperties.swift */; };
@@ -29,7 +35,13 @@
 /* Begin PBXFileReference section */
 		38CF94237607BA1F6AB0D99F /* Pods_Productivity_Tracker.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Productivity_Tracker.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		6502931526550B1700EC5585 /* ActivitiesViewController+Design.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ActivitiesViewController+Design.swift"; sourceTree = "<group>"; };
-		6519EA3C2654578900ECF84F /* ActivityCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActivityCell.swift; sourceTree = "<group>"; };
+		6502931B26553CA200EC5585 /* ActivityUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActivityUseCase.swift; sourceTree = "<group>"; };
+		6502931F26553D2000EC5585 /* ActivityRepositoryProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActivityRepositoryProtocol.swift; sourceTree = "<group>"; };
+		650293222655B0F700EC5585 /* ActivityDataRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActivityDataRepository.swift; sourceTree = "<group>"; };
+		650293252655B2A700EC5585 /* ActivityCoreDataSourceProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActivityCoreDataSourceProtocol.swift; sourceTree = "<group>"; };
+		650293282655B4F500EC5585 /* ActivityCoreDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActivityCoreDataSource.swift; sourceTree = "<group>"; };
+		6520D2F1265C35AB00F223F9 /* ActivityCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActivityCell.swift; sourceTree = "<group>"; };
+		6520D2F8265C3ED000F223F9 /* ActivityCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActivityCollectionViewCell.swift; sourceTree = "<group>"; };
 		654501212654671200F31431 /* Activity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Activity.swift; sourceTree = "<group>"; };
 		65C804412654F222008988F5 /* ActivityItem+CoreDataClass.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "ActivityItem+CoreDataClass.swift"; sourceTree = "<group>"; };
 		65C804422654F222008988F5 /* ActivityItem+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "ActivityItem+CoreDataProperties.swift"; sourceTree = "<group>"; };
@@ -71,6 +83,15 @@
 			path = Pods;
 			sourceTree = "<group>";
 		};
+		6502931E26553CE700EC5585 /* Repository */ = {
+			isa = PBXGroup;
+			children = (
+				6502931F26553D2000EC5585 /* ActivityRepositoryProtocol.swift */,
+				650293222655B0F700EC5585 /* ActivityDataRepository.swift */,
+			);
+			path = Repository;
+			sourceTree = "<group>";
+		};
 		6519EA3326544D8000ECF84F /* Presenter */ = {
 			isa = PBXGroup;
 			children = (
@@ -83,7 +104,9 @@
 			children = (
 				65C804412654F222008988F5 /* ActivityItem+CoreDataClass.swift */,
 				65C804422654F222008988F5 /* ActivityItem+CoreDataProperties.swift */,
+				650293252655B2A700EC5585 /* ActivityCoreDataSourceProtocol.swift */,
 				654501212654671200F31431 /* Activity.swift */,
+				650293282655B4F500EC5585 /* ActivityCoreDataSource.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -108,6 +131,7 @@
 		6545011B2654637300F31431 /* DomainLayer */ = {
 			isa = PBXGroup;
 			children = (
+				6502931B26553CA200EC5585 /* ActivityUseCase.swift */,
 			);
 			path = DomainLayer;
 			sourceTree = "<group>";
@@ -167,6 +191,7 @@
 				6519EA3526544D9000ECF84F /* Data Source */,
 				F6B5AD19264C947D005B3CCC /* Info.plist */,
 				F6B5AD11264C947C005B3CCC /* Productivity_Tracker.xcdatamodeld */,
+				6502931E26553CE700EC5585 /* Repository */,
 			);
 			path = "Productivity Tracker";
 			sourceTree = "<group>";
@@ -184,11 +209,12 @@
 			children = (
 				72807D6EE4BE58362C400579 /* MotivationViewController.swift */,
 				728077C3571B6A7AACCEE60E /* OverviewViewController.swift */,
+				6520D2F8265C3ED000F223F9 /* ActivityCollectionViewCell.swift */,
 				F6B5AD25264C96AA005B3CCC /* HomeViewController.swift */,
 				7280799B0B385475E2E1A51A /* ActivitiesViewController.swift */,
 				6502931526550B1700EC5585 /* ActivitiesViewController+Design.swift */,
+				6520D2F1265C35AB00F223F9 /* ActivityCell.swift */,
 				72807F4AAF1199E9FF75DBA2 /* SettingsViewController.swift */,
-				6519EA3C2654578900ECF84F /* ActivityCell.swift */,
 			);
 			path = ViewControllers;
 			sourceTree = "<group>";
@@ -307,18 +333,24 @@
 			buildActionMask = 2147483647;
 			files = (
 				F6B5AD09264C947C005B3CCC /* AppDelegate.swift in Sources */,
+				650293292655B4F500EC5585 /* ActivityCoreDataSource.swift in Sources */,
 				F6B5AD21264C94BE005B3CCC /* AppCoordinator.swift in Sources */,
 				F6B5AD13264C947C005B3CCC /* Productivity_Tracker.xcdatamodeld in Sources */,
 				F6B5AD0B264C947C005B3CCC /* SceneDelegate.swift in Sources */,
+				6502932026553D2000EC5585 /* ActivityRepositoryProtocol.swift in Sources */,
+				6502931C26553CA200EC5585 /* ActivityUseCase.swift in Sources */,
 				F6B5AD26264C96AA005B3CCC /* HomeViewController.swift in Sources */,
-				6519EA3D2654578900ECF84F /* ActivityCell.swift in Sources */,
 				7280789EB48A7D9F15DD7643 /* MotivationViewController.swift in Sources */,
 				6502931626550B1700EC5585 /* ActivitiesViewController+Design.swift in Sources */,
+				6520D2F9265C3ED000F223F9 /* ActivityCollectionViewCell.swift in Sources */,
+				6520D2F2265C35AB00F223F9 /* ActivityCell.swift in Sources */,
 				72807905F267C69539D692D7 /* OverviewViewController.swift in Sources */,
 				728077366ADA2B308E3C0BA0 /* ActivitiesViewController.swift in Sources */,
 				65C804442654F222008988F5 /* ActivityItem+CoreDataProperties.swift in Sources */,
+				650293232655B0F700EC5585 /* ActivityDataRepository.swift in Sources */,
 				654501222654671200F31431 /* Activity.swift in Sources */,
 				65C804432654F222008988F5 /* ActivityItem+CoreDataClass.swift in Sources */,
+				650293262655B2A700EC5585 /* ActivityCoreDataSourceProtocol.swift in Sources */,
 				72807EC0818E5653456CC9C0 /* SettingsViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

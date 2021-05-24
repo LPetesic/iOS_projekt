@@ -10,5 +10,6 @@ struct Activity: Codable{
     let id: Int
     let name: String
     let date: Date
+    let score: Int
     
 }

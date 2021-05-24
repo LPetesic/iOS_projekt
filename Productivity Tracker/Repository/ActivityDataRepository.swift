@@ -1,8 +1,23 @@
+////
+////  ActivityDataRepository.swift
+////  Productivity Tracker
+////
+////  Created by Antonio Markotic on 19.05.2021..
+////
 //
-//  ActivityDataRepository.swift
-//  Productivity Tracker
+//class ActivityDataRepository: ActivityRepositoryProtocol {
 //
-//  Created by Antonio Markotic on 19.05.2021..
+//    private let coreDataSource: ActivityCoreDataSourceProtocol
 //
-
-import Foundation
+//    init(coreDataSource: ActivityCoreDataSourceProtocol) {
+//        self.coreDataSource = coreDataSource
+//    }
+//
+//    func fetchLocalData() -> [Activity] {
+//        coreDataSource.fetchActivitiesFromCoreData()
+//    }
+//
+//    func deleteLocalData(withId id: Int) {
+//        coreDataSource.deleteActivity(withId: id)
+//    }
+//}
