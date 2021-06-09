@@ -6,7 +6,7 @@
 //
 
 import Foundation
-protocol MotivationViewProtocol{
+protocol MotivationViewProtocol: AnyObject{
     func populateView(quote : [Quote])
     func showError()
 }

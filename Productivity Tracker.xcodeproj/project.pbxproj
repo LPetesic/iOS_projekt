@@ -37,6 +37,7 @@
 		72807905F267C69539D692D7 /* OverviewViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 728077C3571B6A7AACCEE60E /* OverviewViewController.swift */; };
 		72807EC0818E5653456CC9C0 /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72807F4AAF1199E9FF75DBA2 /* SettingsViewController.swift */; };
 		8A2EC94D41ABFB926B243AD1 /* Pods_Productivity_Tracker.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 38CF94237607BA1F6AB0D99F /* Pods_Productivity_Tracker.framework */; };
+		F65680552670CA4800266167 /* MotivationViewController+Delegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F65680542670CA4800266167 /* MotivationViewController+Delegate.swift */; };
 		F6B5AD09264C947C005B3CCC /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6B5AD08264C947C005B3CCC /* AppDelegate.swift */; };
 		F6B5AD0B264C947C005B3CCC /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6B5AD0A264C947C005B3CCC /* SceneDelegate.swift */; };
 		F6B5AD13264C947C005B3CCC /* Productivity_Tracker.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = F6B5AD11264C947C005B3CCC /* Productivity_Tracker.xcdatamodeld */; };
@@ -79,6 +80,7 @@
 		72807D6EE4BE58362C400579 /* MotivationViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MotivationViewController.swift; sourceTree = "<group>"; };
 		72807F4AAF1199E9FF75DBA2 /* SettingsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
 		8107DE3F40E1BD3A8F63FAF8 /* Pods-Productivity Tracker.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Productivity Tracker.debug.xcconfig"; path = "Target Support Files/Pods-Productivity Tracker/Pods-Productivity Tracker.debug.xcconfig"; sourceTree = "<group>"; };
+		F65680542670CA4800266167 /* MotivationViewController+Delegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "MotivationViewController+Delegate.swift"; sourceTree = "<group>"; };
 		F6B5AD05264C947C005B3CCC /* Productivity Tracker.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Productivity Tracker.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		F6B5AD08264C947C005B3CCC /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		F6B5AD0A264C947C005B3CCC /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -198,6 +200,7 @@
 				656944CE266FEEAE0034D52C /* MotivationViewController+Design.swift */,
 				656944DD2670848F0034D52C /* MotivationViewProtocol.swift */,
 				656944CC266FED5D0034D52C /* Quote.swift */,
+				F65680542670CA4800266167 /* MotivationViewController+Delegate.swift */,
 			);
 			path = MotivationView;
 			sourceTree = "<group>";
@@ -461,6 +464,7 @@
 				654501222654671200F31431 /* Activity.swift in Sources */,
 				65C804432654F222008988F5 /* ActivityItem+CoreDataClass.swift in Sources */,
 				656944EB267087650034D52C /* SettingsPresenter.swift in Sources */,
+				F65680552670CA4800266167 /* MotivationViewController+Delegate.swift in Sources */,
 				650293262655B2A700EC5585 /* ActivityCoreDataSourceProtocol.swift in Sources */,
 				656944DC2670839E0034D52C /* MotivationPresenter.swift in Sources */,
 				72807EC0818E5653456CC9C0 /* SettingsViewController.swift in Sources */,

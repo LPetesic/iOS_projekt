@@ -8,7 +8,7 @@
 import UIKit
 import SnapKit
 
-class MotivationViewController: UIViewController , MotivationViewProtocol{
+class MotivationViewController: UIViewController{
 
     
     
@@ -44,20 +44,6 @@ class MotivationViewController: UIViewController , MotivationViewProtocol{
         authorLabel.transform = authorLabel.transform.translatedBy(x: 0, y: view.frame.height/4)
         authorLabel.alpha = 0
         quoteLabel.alpha = 0
-    }
-    
-
-    func populateView(quote: [Quote]) {
-        quoteLabel.text = quote[0].quote
-        authorLabel.text = quote[0].author
-    }
-    
-    func showError() {
-
-        if (quoteLabel.text == nil){
-            presentErrorAlert()
-        }
-       
     }
     
     func presentErrorAlert(){

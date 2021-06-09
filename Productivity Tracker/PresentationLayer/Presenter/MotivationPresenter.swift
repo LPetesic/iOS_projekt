@@ -10,8 +10,8 @@ import UIKit
 
 class MotivationPresenter {
     
-    private let nService : NetworkService
-    weak private var motivationViewDelegate : MotivationViewController?
+    private let nService: NetworkService
+    weak private var motivationViewDelegate: MotivationViewProtocol?
     
     init(networking: NetworkService) {
         self.nService = networking
