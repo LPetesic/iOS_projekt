@@ -55,7 +55,7 @@ class ActivitiesViewController: UIViewController, UIGestureRecognizerDelegate {
         newActivity.name = name
         newActivity.score = 0
         newActivity.createdAt = Date()
-        
+        newActivity.orderID = Int64(activitiesArray.count)
         do{
             try context.save()
             getItems()
