@@ -8,11 +8,14 @@
 import Foundation
 import UIKit
 
+
+
 class NetworkService: NetworkingProtocol{
-    let defaults = UserDefaults()
+    
+    private let defaults = UserDefaults()
 
     
-    func executeUrlRequest<T: Codable>(_ request: URLRequest, completionHandler: @escaping
+    private func executeUrlRequest<T: Codable>(_ request: URLRequest, completionHandler: @escaping
                                         (Result<[T], RequestError>) -> Void) {
         
         let dataTask = URLSession.shared.dataTask(with: request) { data, response,
@@ -53,14 +56,14 @@ class NetworkService: NetworkingProtocol{
     
     
     // API Link: https://zenquotes.io
-    func fetchQuoteOfTheDay() -> URLRequest{
+    public func fetchQuoteOfTheDay(completionHandler:@escaping (Result<[Quote], RequestError>) -> Void){
         guard let url = URL(string: "https://zenquotes.io/api/today") else{
             fatalError("Url not working")
         }
         var request = URLRequest(url: url)
         request.httpMethod = "GET"
         request.addValue("application/json", forHTTPHeaderField: "Content-type")
-        return request
+        self.executeUrlRequest(request, completionHandler: completionHandler)
         
     }
 }
