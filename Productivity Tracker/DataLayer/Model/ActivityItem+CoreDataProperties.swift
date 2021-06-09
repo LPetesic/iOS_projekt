@@ -18,6 +18,6 @@ extension ActivityItem {
     @NSManaged public var score: Int32
     @NSManaged public var name: String?
     @NSManaged public var createdAt: Date?
-    @NSManaged public var id: Int64
+    @NSManaged public var orderID: Int64
 
 }

@@ -7,7 +7,7 @@
 
 import Foundation
 struct Activity: Codable{
-    let id: Int
+    let orderID: Int
     let name: String
     let date: Date
     let score: Int

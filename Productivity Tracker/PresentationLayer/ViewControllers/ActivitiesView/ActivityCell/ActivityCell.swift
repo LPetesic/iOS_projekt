@@ -10,7 +10,7 @@ import UIKit
 class ActivityCell: UITableViewCell{
     
     
-    
+    //currently empty, should be populated while creating a custom tableviewcell
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?){
         super.init(style: style, reuseIdentifier: reuseIdentifier)
         

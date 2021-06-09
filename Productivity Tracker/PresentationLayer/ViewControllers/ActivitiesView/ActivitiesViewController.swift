@@ -11,8 +11,10 @@ import SnapKit
 class ActivitiesViewController: UIViewController, UIGestureRecognizerDelegate {
     
     let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
+    
     var activitiesArray = [ActivityItem]()
     var tableView:UITableView!
+
    
     private var router: AppCoordinatorProtocol!
     
@@ -24,8 +26,11 @@ class ActivitiesViewController: UIViewController, UIGestureRecognizerDelegate {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+ 
         buildViews()
         getItems()
+        
+       
     }
     
     
@@ -33,11 +38,13 @@ class ActivitiesViewController: UIViewController, UIGestureRecognizerDelegate {
     //Core Data
     func getItems(){
         do{
+            //fetch from cd and populate ActivitiesArray
             activitiesArray = try context.fetch(ActivityItem.fetchRequest())
+            //reorder that array according to orderIDs
+            self.activitiesArray = self.activitiesArray.sorted(by: {$0.orderID < $1.orderID})
             DispatchQueue.main.async {
                 self.tableView.reloadData()
             }
-           
         } catch{
             print("error")
         }
@@ -68,8 +75,7 @@ class ActivitiesViewController: UIViewController, UIGestureRecognizerDelegate {
     }
     
     
-    
-    
+  
     
     //navigation Bar Buttons
     @objc func plusBarButtonPressed(){
@@ -88,14 +94,9 @@ class ActivitiesViewController: UIViewController, UIGestureRecognizerDelegate {
         
     @objc func editBarButtonPressed(){
         tableView.isEditing = !tableView.isEditing
-        
     }
     
 }
-
-
-
-
 
 
 //table view Delegate Methods
@@ -113,7 +114,7 @@ extension ActivitiesViewController: UITableViewDataSource{
     }
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-
+        activitiesArray[indexPath.row].setValue(indexPath.row, forKey: "orderID")
         let cell = tableView.dequeueReusableCell(withIdentifier: "ActivityCell",for: indexPath)
         cell.textLabel?.text = (activitiesArray[indexPath.row]).name
         cell.textLabel?.textColor = .black
@@ -126,8 +127,25 @@ extension ActivitiesViewController: UITableViewDataSource{
         return true
     }
 
+    
     func tableView(_ tableView: UITableView, moveRowAt sourceIndexPath: IndexPath, to destinationIndexPath: IndexPath) {
-        activitiesArray.swapAt(sourceIndexPath.row, destinationIndexPath.row)
+        
+        //change orderIds of switched activities
+        let srcOrderId = activitiesArray[sourceIndexPath.row].orderID
+        let destOrderId = activitiesArray[destinationIndexPath.row].orderID
+        activitiesArray[sourceIndexPath.row].orderID = destOrderId
+        activitiesArray[destinationIndexPath.row].orderID = srcOrderId
+    
+        //reorder array according to newly set orderIDs
+        self.activitiesArray = self.activitiesArray.sorted(by: {$0.orderID < $1.orderID})
+        
+        //save it to CD
+        do{
+            try context.save()
+        }catch{
+            print("Error when tryin to save to CD")
+        }
+        tableView.reloadData()
     }
 
     func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {

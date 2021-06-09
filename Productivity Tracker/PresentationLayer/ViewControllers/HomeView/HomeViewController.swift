@@ -11,12 +11,19 @@ import CoreData
 
 class HomeViewController: UIViewController {
     
-    
-    let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
+    //array of Activity items
     var activitiesArray = [ActivityItem]()
-    var collectionView:UICollectionView!
-
-    private let spacing:CGFloat = 16.0
+    
+    //collection view
+    var collectionView : UICollectionView!
+    let spacing:CGFloat = 20.0
+    
+    
+    var notificationLabel = UILabel()
+    var arrowImage = UIImageView()
+    
+    //core data context
+    let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
     
     
     private var router: AppCoordinatorProtocol!
@@ -32,51 +39,62 @@ class HomeViewController: UIViewController {
         super.viewDidLoad()
         self.view.backgroundColor = .white
         
+       
         createCollectionView()
         getItems()
+        
     }
+    
+    
+  
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(true)
+        getItems()
+        
+        //if there are no activities, suggest the user to create one with an animation
+        if activitiesArray.count == 0{
+            arrowImage.isHidden = false
+            notificationLabel.isHidden = false
+            buildArrowAndLabel()
+            arrowImage.transform = arrowImage.transform.translatedBy(x: 0, y: -10)
+            notificationLabel.transform = notificationLabel.transform.translatedBy(x: 0, y: -10)
+        }else{
+        //if there is at least one activity, hide the animation which suggest adding new activity
+            arrowImage.isHidden = true
+            notificationLabel.isHidden = true
+        }
+        collectionView.reloadData()
+    }
+    
     
     override func viewDidAppear(_ animated: Bool) {
-
-            super.viewDidAppear(animated)
-            getItems()
-            collectionView.reloadData()
-
+        super.viewDidAppear(animated)
+        UIView.animate(withDuration: 0.4,
+                       delay: 0,
+                       options: [.autoreverse, .repeat],
+                       animations: { [self] in
+                        arrowImage.transform = .identity
+                        notificationLabel.transform = .identity
+                        self.view.layoutIfNeeded()
+                       }
+        )
     }
-    
-    func createCollectionView(){
-        //layout
-        let layout = UICollectionViewFlowLayout()
-        layout.scrollDirection = .vertical
-        layout.sectionInset = UIEdgeInsets(top: spacing, left: spacing, bottom: spacing, right: spacing)
-        layout.minimumLineSpacing = spacing
-        layout.minimumInteritemSpacing = spacing
-        
-        
-        //collectionView
-       collectionView = UICollectionView(frame: CGRect(x:0,y:0,width: view.bounds.width, height: view.bounds.height), collectionViewLayout: layout)
-        view.addSubview(collectionView)
-        collectionView.register(ActivityCollectionViewCell.self, forCellWithReuseIdentifier: "cell")
-        
-        let size = (collectionView.bounds.width - 3*spacing) / 2
-        layout.itemSize = CGSize(width: size, height: size)
-        
-        collectionView.backgroundColor = .white
-        collectionView.delegate = self
-        collectionView.dataSource = self
-    }
-    
+
+ 
+  
     //Core Data fetch
     func getItems(){
         do{
             activitiesArray = try context.fetch(ActivityItem.fetchRequest())
-            DispatchQueue.main.async {
-            }
+            //reorder activities by their orderId
+            activitiesArray = activitiesArray.sorted(by: {$0.orderID < $1.orderID})
         } catch{
             print(error)
         }
     }
 }
+
+
 
 //Data source metode
 extension HomeViewController: UICollectionViewDataSource{
@@ -85,10 +103,15 @@ extension HomeViewController: UICollectionViewDataSource{
         return activitiesArray.count
     }
     
+    
+    
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "cell", for: indexPath) as! ActivityCollectionViewCell
         cell.backgroundColor = .gray
+        
+        //this specific size is half of both width and height of the cell which makes out cells perfect round shape on all ios devices
+        cell.layer.cornerRadius = (view.frame.width - 3*spacing)/4
         cell.populateCell(with: activitiesArray[indexPath.row])
         
         return cell

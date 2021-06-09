@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import SnapKit
 extension ActivitiesViewController{
     
     
@@ -71,4 +72,5 @@ extension ActivitiesViewController{
         
     }
     
+   
 }

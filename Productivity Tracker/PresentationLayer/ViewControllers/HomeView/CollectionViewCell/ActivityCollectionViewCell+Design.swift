@@ -1,30 +1,28 @@
 //
-//  ActivityCollectionViewCell.swift
+//  ActivityCollectionViewCell+Design.swift
 //  Productivity Tracker
 //
-//  Created by Antonio Markotic on 24.05.2021..
+//  Created by Antonio Markotic on 09.06.2021..
 //
 
-import Foundation
 import UIKit
-class ActivityCollectionViewCell: UICollectionViewCell{
-    var nameLabel = UILabel()
-    var scoreLabel = UILabel()
-    
-    override init(frame: CGRect) {
-        super.init(frame: frame)
+import SnapKit
+
+
+extension ActivityCollectionViewCell{
+    func  buildViews(){
         createItems()
         setConstraints()
     }
     
-    required init?(coder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
-    }
-    
     func createItems(){
+        
+                
         //nameLabel
         nameLabel.font = UIFont(name: "Futura", size: 20)
         nameLabel.textColor = .white
+        nameLabel.numberOfLines = 0
+        nameLabel.textAlignment = .center
         
         //score
         scoreLabel.font = UIFont(name: "Futura", size: 20)
@@ -35,19 +33,17 @@ class ActivityCollectionViewCell: UICollectionViewCell{
         
         nameLabel.snp.makeConstraints { (make) in
             make.centerX.equalToSuperview()
-            make.centerY.equalToSuperview().offset(-20)
+            make.top.equalToSuperview().offset(20)
+            make.height.equalToSuperview().multipliedBy(0.5)
+            make.width.equalToSuperview().multipliedBy(0.7)
         }
         
         self.addSubview(scoreLabel)
         
         scoreLabel.snp.makeConstraints { (make) in
             make.centerX.equalToSuperview()
-            make.centerY.equalToSuperview().offset(20)
+            make.top.equalTo(nameLabel.snp.bottom).offset(15)
+            
         }
-    }
-    
-    func populateCell(with cell: ActivityItem){
-        nameLabel.text = cell.name
-        scoreLabel.text = ("\(cell.score)")
     }
 }
