@@ -10,6 +10,7 @@ import SnapKit
 
 class ActivitiesViewController: UIViewController, UIGestureRecognizerDelegate {
     
+    //TODO: move this to repo by adding a change order funciton
     let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
     
     var tableView:UITableView!
@@ -41,20 +42,21 @@ class ActivitiesViewController: UIViewController, UIGestureRecognizerDelegate {
     
 //MARK: - navigation Bar Buttons
     @objc func plusBarButtonPressed(){
-        let alert = UIAlertController(title: "New activity", message: "Add new activity", preferredStyle: .alert)
-        alert.addTextField(configurationHandler: nil)
-        alert.addAction(UIAlertAction(title: "Submit", style: .cancel, handler: { (_) in
-          let field = alert.textFields?.first
-            guard let text = field?.text else{
-                return
-            }
-            self.presenter.createActivity(name: text)
-            DispatchQueue.main.async {
-                self.tableView.reloadData()
-            }
-            
-        }))
-        present(alert, animated: true, completion: nil)
+//        let alert = UIAlertController(title: "New activity", message: "Add new activity", preferredStyle: .alert)
+//        alert.addTextField(configurationHandler: nil)
+//        alert.addAction(UIAlertAction(title: "Submit", style: .cancel, handler: { (_) in
+//          let field = alert.textFields?.first
+//            guard let text = field?.text else{
+//                return
+//            }
+//            self.presenter.createActivity(name: text)
+//            DispatchQueue.main.async {
+//                self.tableView.reloadData()
+//            }
+//
+//        }))
+//        present(alert, animated: true, completion: nil)
+        presenter.showCreateActivity()
     }
         
     @objc func editBarButtonPressed(){

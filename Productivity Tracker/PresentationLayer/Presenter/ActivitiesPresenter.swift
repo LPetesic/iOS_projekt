@@ -8,7 +8,11 @@
 import Foundation
 import UIKit
 
-class ActivitiesPresenter {
+protocol CreateActiviyPresenter: AnyObject {
+    func createActivity(name:String)
+}
+
+class ActivitiesPresenter: CreateActiviyPresenter {
     weak var delegate: ActivitiesViewDelegate?
     private var router: AppCoordinatorProtocol!
     private var activityUseCase: ActivityUseCase!
@@ -43,6 +47,14 @@ class ActivitiesPresenter {
     func deleteActivity(index: Int){
         self.activityUseCase.deleteActivity(item: activitiesArray[index])
         self.getItems()
+    }
+    
+    func showCreateActivity(){
+        self.router.showCreateActivityScreen()
+    }
+    
+    func refreshList(){
+        delegate?.refresh()
     }
     
     
