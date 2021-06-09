@@ -37,27 +37,6 @@ class ActivitiesViewController: UIViewController, UIGestureRecognizerDelegate {
        
     }
     
-    
-    
-//MARK: - Core Data
-   
-    
-    
-    
-    func deleteActivity(item: ActivityItem){
-        context.delete(item)
-        do{
-           try  context.save()
-            presenter.getItems()
-            DispatchQueue.main.async {
-                self.tableView.reloadData()
-            }
-        }catch{
-        
-        }
-    }
-    
-    
   
     
 //MARK: - navigation Bar Buttons
@@ -136,8 +115,11 @@ extension ActivitiesViewController: UITableViewDataSource{
 
     func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
         if editingStyle == .delete{
-            deleteActivity(item: presenter.activitiesArray[indexPath.row])
+            self.presenter.deleteActivity(item: presenter.activitiesArray[indexPath.row])
             tableView.deleteRows(at: [indexPath], with: .none)
+            DispatchQueue.main.async {
+                self.tableView.reloadData()
+            }
         }
     }
 

@@ -16,7 +16,7 @@ class ActivityDataRepository: ActivityRepositoryProtocol {
     init(context: NSManagedObjectContext){
         self.context = context
     }
-
+    
     public func getItems() throws -> [ActivityItem] {
         return try context.fetch(ActivityItem.fetchRequest())
     }
@@ -31,6 +31,10 @@ class ActivityDataRepository: ActivityRepositoryProtocol {
             try context.save()
         }catch{
         }
+    }
+    
+    func deleteActivity(item: ActivityItem){
+        context.delete(item)
     }
     
 }

@@ -8,5 +8,6 @@
 protocol ActivityRepositoryProtocol {
     func getItems() throws ->  [ActivityItem]
     func createActivity(name:String)
+    func deleteActivity(item: ActivityItem)
 
 }

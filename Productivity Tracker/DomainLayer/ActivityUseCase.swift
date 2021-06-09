@@ -23,6 +23,10 @@ final class ActivityUseCase {
     func createActivity(name:String){
         activityRepository.createActivity(name: name)
     }
+    
+    func deleteActivity(item: ActivityItem){
+        activityRepository.deleteActivity(item: item)
+    }
 
 
 }

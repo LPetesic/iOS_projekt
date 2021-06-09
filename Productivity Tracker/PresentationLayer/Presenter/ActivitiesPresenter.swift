@@ -39,5 +39,10 @@ class ActivitiesPresenter {
         self.getItems()
     }
     
+    func deleteActivity(item: ActivityItem){
+        self.activityUseCase.deleteActivity(item: item)
+        self.getItems()
+    }
+    
     
 }
