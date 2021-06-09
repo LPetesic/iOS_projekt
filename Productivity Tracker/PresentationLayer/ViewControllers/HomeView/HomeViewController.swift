@@ -11,6 +11,8 @@ import CoreData
 
 class HomeViewController: UIViewController {
     
+    private let MAGIC_NUMBER = 6
+    
     //array of Activity items
     var activitiesArray = [ActivityItem]()
     
@@ -122,7 +124,7 @@ extension HomeViewController: UICollectionViewDataSource{
 //delegate metode
 extension HomeViewController: UICollectionViewDelegate{
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        activitiesArray[indexPath.row].score += 1
+        activitiesArray[indexPath.row].score = (activitiesArray[indexPath.row].score + 1) % Int32(MAGIC_NUMBER)
         do{
             try context.save()
             getItems()

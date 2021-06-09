@@ -25,7 +25,19 @@ class AppCoordinator: AppCoordinatorProtocol {
         let motivationController = MotivationViewController(router: self)
         let overviewController = OverviewViewController(router: self)
         let homeController = HomeViewController(router: self)
-        let activitiesController = UINavigationController(rootViewController:  ActivitiesViewController(router: self))
+        
+        
+//MARK: - activities view
+
+        let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
+        let activityRepository = ActivityDataRepository(context: context)
+        let activityUseCase = ActivityUseCase(activityRepository: activityRepository)
+        let activitiesPresnter = ActivitiesPresenter(router: self, activityUseCase: activityUseCase)
+        let activitiesController = UINavigationController(
+            rootViewController:  ActivitiesViewController(
+                presenter: activitiesPresnter
+            )
+        )
        
         let settingsController = SettingsViewController(router: self)
 
