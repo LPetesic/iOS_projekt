@@ -115,11 +115,12 @@ extension ActivitiesViewController: UITableViewDataSource{
 
     func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
         if editingStyle == .delete{
-            self.presenter.deleteActivity(item: presenter.activitiesArray[indexPath.row])
-            tableView.deleteRows(at: [indexPath], with: .none)
+            self.presenter.deleteActivity(index: indexPath.row)
             DispatchQueue.main.async {
                 self.tableView.reloadData()
             }
+//            tableView.deleteRows(at: [indexPath], with: .none)
+            
         }
     }
 

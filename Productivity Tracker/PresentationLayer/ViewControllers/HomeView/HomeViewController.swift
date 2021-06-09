@@ -28,11 +28,11 @@ class HomeViewController: UIViewController {
     let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
     
     
-    private var router: AppCoordinatorProtocol!
+    private var presenter: HomePresenter!
     
-    convenience init(router: AppCoordinatorProtocol) {
+    convenience init(presenter: HomePresenter) {
         self.init()
-        self.router = router
+        self.presenter = presenter
         title = "Home"
         
     }

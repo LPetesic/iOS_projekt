@@ -6,3 +6,15 @@
 //
 
 import Foundation
+
+class HomePresenter {
+    private var router: AppCoordinatorProtocol!
+    private var activityUseCase: ActivityUseCase!
+    
+    convenience init(router: AppCoordinatorProtocol, activityUseCase: ActivityUseCase){
+        self.init()
+        self.router = router
+        self.activityUseCase = activityUseCase
+    }
+}
+

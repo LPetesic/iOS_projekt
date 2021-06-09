@@ -35,6 +35,10 @@ class ActivityDataRepository: ActivityRepositoryProtocol {
     
     func deleteActivity(item: ActivityItem){
         context.delete(item)
+        do{
+           try  context.save()
+        }catch{
+        }
     }
     
 }
