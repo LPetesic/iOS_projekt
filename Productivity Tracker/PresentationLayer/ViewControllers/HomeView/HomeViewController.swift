@@ -13,9 +13,6 @@ class HomeViewController: UIViewController {
     
     private let MAGIC_NUMBER = 6
     
-    //array of Activity items
-    var activitiesArray = [ActivityItem]()
-    
     //collection view
     var collectionView : UICollectionView!
     let spacing:CGFloat = 20.0
@@ -43,7 +40,7 @@ class HomeViewController: UIViewController {
         
        
         createCollectionView()
-        getItems()
+        presenter.getItems()
         
     }
     
@@ -51,10 +48,10 @@ class HomeViewController: UIViewController {
   
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(true)
-        getItems()
+        presenter.getItems()
         
         //if there are no activities, suggest the user to create one with an animation
-        if activitiesArray.count == 0{
+        if presenter.activitiesArray.count == 0{
             arrowImage.isHidden = false
             notificationLabel.isHidden = false
             buildArrowAndLabel()
@@ -83,17 +80,6 @@ class HomeViewController: UIViewController {
     }
 
  
-  
-    //Core Data fetch
-    func getItems(){
-        do{
-            activitiesArray = try context.fetch(ActivityItem.fetchRequest())
-            //reorder activities by their orderId
-            activitiesArray = activitiesArray.sorted(by: {$0.orderID < $1.orderID})
-        } catch{
-            print(error)
-        }
-    }
 }
 
 
@@ -102,7 +88,7 @@ class HomeViewController: UIViewController {
 extension HomeViewController: UICollectionViewDataSource{
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         
-        return activitiesArray.count
+        return presenter.activitiesArray.count
     }
     
     
@@ -114,7 +100,7 @@ extension HomeViewController: UICollectionViewDataSource{
         
         //this specific size is half of both width and height of the cell which makes out cells perfect round shape on all ios devices
         cell.layer.cornerRadius = (view.frame.width - 3*spacing)/4
-        cell.populateCell(with: activitiesArray[indexPath.row])
+        cell.populateCell(with: presenter.activitiesArray[indexPath.row])
         
         return cell
     }
@@ -124,10 +110,10 @@ extension HomeViewController: UICollectionViewDataSource{
 //delegate metode
 extension HomeViewController: UICollectionViewDelegate{
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        activitiesArray[indexPath.row].score = (activitiesArray[indexPath.row].score + 1) % Int32(MAGIC_NUMBER)
+        presenter.activitiesArray[indexPath.row].score = (presenter.activitiesArray[indexPath.row].score + 1) % Int32(MAGIC_NUMBER)
         do{
             try context.save()
-            getItems()
+            presenter.getItems()
         }catch{
             
         }

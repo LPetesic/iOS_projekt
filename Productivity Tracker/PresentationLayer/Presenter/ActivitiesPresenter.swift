@@ -29,6 +29,7 @@ class ActivitiesPresenter {
         do{
             //fetch from cd and populate ActivitiesArray
             activitiesArray = try activityUseCase.getItems()
+            activitiesArray = self.activitiesArray.sorted(by: {$0.orderID < $1.orderID})
         } catch{
             print("error")
         }
