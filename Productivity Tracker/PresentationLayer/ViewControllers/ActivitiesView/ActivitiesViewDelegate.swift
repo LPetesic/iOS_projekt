@@ -8,4 +8,5 @@
 import Foundation
 
 protocol ActivitiesViewDelegate: AnyObject {
+    func refresh()
 }

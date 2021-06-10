@@ -8,4 +8,9 @@
 import Foundation
 
 extension ActivitiesViewController: ActivitiesViewDelegate {
+    func refresh(){
+        DispatchQueue.main.async {
+            self.tableView.reloadData()
+        }
+    }
 }

@@ -11,14 +11,19 @@ import UIKit
 protocol AppCoordinatorProtocol {
 
     func setStartScreen(in window: UIWindow?)
+    func showCreateActivityScreen()
 }
 
 class AppCoordinator: AppCoordinatorProtocol {
     private var navigationController: UINavigationController!
+    
+    private var tabbedController: UITabBarController!
+    
+    private var activitiesPresnter: ActivitiesPresenter?
 
     init(navigationController: UINavigationController) {
         self.navigationController = navigationController
-
+        self.tabbedController = UITabBarController()
     }
 
     func setStartScreen(in window: UIWindow?) {
@@ -36,10 +41,10 @@ class AppCoordinator: AppCoordinatorProtocol {
         
 //MARK: - activities view
 
-        let activitiesPresnter = ActivitiesPresenter(router: self, activityUseCase: activityUseCase)
+        activitiesPresnter = ActivitiesPresenter(router: self, activityUseCase: activityUseCase)
         let activitiesController = UINavigationController(
             rootViewController:  ActivitiesViewController(
-                presenter: activitiesPresnter
+                presenter: activitiesPresnter!
             )
         )
        
@@ -52,7 +57,7 @@ class AppCoordinator: AppCoordinatorProtocol {
         settingsController.tabBarItem.image = UIImage(systemName: "gearshape.fill")
 
 
-        let tabbedController = UITabBarController()
+        
         tabbedController.title = "Productivity Tracker"
         tabbedController.tabBar.barTintColor = .black
         tabbedController.tabBar.tintColor = .white
@@ -69,5 +74,12 @@ class AppCoordinator: AppCoordinatorProtocol {
         window?.rootViewController = tabbedController
         window?.makeKeyAndVisible()
 
+    }
+    
+    func showCreateActivityScreen(){
+        let vc = CreateActivityViewController(
+            presenter: activitiesPresnter!
+        )
+        self.tabbedController.selectedViewController?.present(vc, animated: true, completion: nil)
     }
 }
