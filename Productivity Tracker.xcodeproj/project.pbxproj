@@ -15,7 +15,13 @@
 		650293292655B4F500EC5585 /* ActivityCoreDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 650293282655B4F500EC5585 /* ActivityCoreDataSource.swift */; };
 		6520D2F2265C35AB00F223F9 /* ActivityCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6520D2F1265C35AB00F223F9 /* ActivityCell.swift */; };
 		6520D2F9265C3ED000F223F9 /* ActivityCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6520D2F8265C3ED000F223F9 /* ActivityCollectionViewCell.swift */; };
+		652CDEE52672845000A7BE2F /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 652CDEE42672845000A7BE2F /* GoogleService-Info.plist */; };
+		652CDEE7267297D400A7BE2F /* LoginViewProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 652CDEE6267297D400A7BE2F /* LoginViewProtocol.swift */; };
+		652CDEE92672A10F00A7BE2F /* LoginResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 652CDEE82672A10F00A7BE2F /* LoginResponse.swift */; };
 		654501222654671200F31431 /* Activity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 654501212654671200F31431 /* Activity.swift */; };
+		655A86DC26725CE800425E5F /* LoginViewPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 655A86DB26725CE800425E5F /* LoginViewPresenter.swift */; };
+		655A86DF26725CFF00425E5F /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 655A86DE26725CFF00425E5F /* LoginViewController.swift */; };
+		655A86E126725D1100425E5F /* LoginViewController+Design.swift in Sources */ = {isa = PBXBuildFile; fileRef = 655A86E026725D1100425E5F /* LoginViewController+Design.swift */; };
 		656944CB266FE3D40034D52C /* SettingsViewController+Design.swift in Sources */ = {isa = PBXBuildFile; fileRef = 656944CA266FE3D40034D52C /* SettingsViewController+Design.swift */; };
 		656944CD266FED5D0034D52C /* Quote.swift in Sources */ = {isa = PBXBuildFile; fileRef = 656944CC266FED5D0034D52C /* Quote.swift */; };
 		656944CF266FEEAE0034D52C /* MotivationViewController+Design.swift in Sources */ = {isa = PBXBuildFile; fileRef = 656944CE266FEEAE0034D52C /* MotivationViewController+Design.swift */; };
@@ -60,7 +66,13 @@
 		650293282655B4F500EC5585 /* ActivityCoreDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActivityCoreDataSource.swift; sourceTree = "<group>"; };
 		6520D2F1265C35AB00F223F9 /* ActivityCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActivityCell.swift; sourceTree = "<group>"; };
 		6520D2F8265C3ED000F223F9 /* ActivityCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActivityCollectionViewCell.swift; sourceTree = "<group>"; };
+		652CDEE42672845000A7BE2F /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		652CDEE6267297D400A7BE2F /* LoginViewProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewProtocol.swift; sourceTree = "<group>"; };
+		652CDEE82672A10F00A7BE2F /* LoginResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginResponse.swift; sourceTree = "<group>"; };
 		654501212654671200F31431 /* Activity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Activity.swift; sourceTree = "<group>"; };
+		655A86DB26725CE800425E5F /* LoginViewPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewPresenter.swift; sourceTree = "<group>"; };
+		655A86DE26725CFF00425E5F /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
+		655A86E026725D1100425E5F /* LoginViewController+Design.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "LoginViewController+Design.swift"; sourceTree = "<group>"; };
 		656944CA266FE3D40034D52C /* SettingsViewController+Design.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "SettingsViewController+Design.swift"; sourceTree = "<group>"; };
 		656944CC266FED5D0034D52C /* Quote.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Quote.swift; sourceTree = "<group>"; };
 		656944CE266FEEAE0034D52C /* MotivationViewController+Design.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "MotivationViewController+Design.swift"; sourceTree = "<group>"; };
@@ -131,6 +143,7 @@
 		6519EA3326544D8000ECF84F /* Presenter */ = {
 			isa = PBXGroup;
 			children = (
+				655A86DB26725CE800425E5F /* LoginViewPresenter.swift */,
 				656944DB2670839E0034D52C /* MotivationPresenter.swift */,
 				656944E4267087400034D52C /* OverviewPresenter.swift */,
 				656944E62670874D0034D52C /* HomeViewPresenter.swift */,
@@ -191,12 +204,24 @@
 		6545011F2654640600F31431 /* SupportingFiles */ = {
 			isa = PBXGroup;
 			children = (
+				652CDEE42672845000A7BE2F /* GoogleService-Info.plist */,
 				F6B5AD08264C947C005B3CCC /* AppDelegate.swift */,
 				F6B5AD0A264C947C005B3CCC /* SceneDelegate.swift */,
 				F6B5AD14264C947D005B3CCC /* Assets.xcassets */,
 				F6B5AD16264C947D005B3CCC /* LaunchScreen.storyboard */,
 			);
 			path = SupportingFiles;
+			sourceTree = "<group>";
+		};
+		655A86DD26725CED00425E5F /* LoginView */ = {
+			isa = PBXGroup;
+			children = (
+				655A86DE26725CFF00425E5F /* LoginViewController.swift */,
+				655A86E026725D1100425E5F /* LoginViewController+Design.swift */,
+				652CDEE6267297D400A7BE2F /* LoginViewProtocol.swift */,
+				652CDEE82672A10F00A7BE2F /* LoginResponse.swift */,
+			);
+			path = LoginView;
 			sourceTree = "<group>";
 		};
 		656944DA267083570034D52C /* MotivationView */ = {
@@ -320,6 +345,7 @@
 		F6B5AD22264C958A005B3CCC /* ViewControllers */ = {
 			isa = PBXGroup;
 			children = (
+				655A86DD26725CED00425E5F /* LoginView */,
 				656944DA267083570034D52C /* MotivationView */,
 				656944DF2670860F0034D52C /* OverviewView */,
 				656944E0267086250034D52C /* HomeView */,
@@ -390,6 +416,7 @@
 			files = (
 				F6B5AD18264C947D005B3CCC /* LaunchScreen.storyboard in Resources */,
 				F6B5AD15264C947D005B3CCC /* Assets.xcassets in Resources */,
+				652CDEE52672845000A7BE2F /* GoogleService-Info.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -451,6 +478,7 @@
 				F6B5AD13264C947C005B3CCC /* Productivity_Tracker.xcdatamodeld in Sources */,
 				656944D3266FFF5F0034D52C /* NetworkService.swift in Sources */,
 				F6B5AD0B264C947C005B3CCC /* SceneDelegate.swift in Sources */,
+				655A86DC26725CE800425E5F /* LoginViewPresenter.swift in Sources */,
 				656944EF267093440034D52C /* ActivityCollectionViewCell+Design.swift in Sources */,
 				656944D5266FFF830034D52C /* NetworkingProtocol.swift in Sources */,
 				656944D7266FFFB30034D52C /* RequestError.swift in Sources */,
@@ -466,11 +494,14 @@
 				6520D2F9265C3ED000F223F9 /* ActivityCollectionViewCell.swift in Sources */,
 				656944CF266FEEAE0034D52C /* MotivationViewController+Design.swift in Sources */,
 				656944ED2670929F0034D52C /* HomeViewController+Design.swift in Sources */,
+				655A86E126725D1100425E5F /* LoginViewController+Design.swift in Sources */,
 				6520D2F2265C35AB00F223F9 /* ActivityCell.swift in Sources */,
 				72807905F267C69539D692D7 /* OverviewViewController.swift in Sources */,
+				652CDEE7267297D400A7BE2F /* LoginViewProtocol.swift in Sources */,
 				728077366ADA2B308E3C0BA0 /* ActivitiesViewController.swift in Sources */,
 				65C804442654F222008988F5 /* ActivityItem+CoreDataProperties.swift in Sources */,
 				650293232655B0F700EC5585 /* ActivityDataRepository.swift in Sources */,
+				652CDEE92672A10F00A7BE2F /* LoginResponse.swift in Sources */,
 				656944E72670874D0034D52C /* HomeViewPresenter.swift in Sources */,
 				654501222654671200F31431 /* Activity.swift in Sources */,
 				65C804432654F222008988F5 /* ActivityItem+CoreDataClass.swift in Sources */,
@@ -479,6 +510,7 @@
 				650293262655B2A700EC5585 /* ActivityCoreDataSourceProtocol.swift in Sources */,
 				656944DC2670839E0034D52C /* MotivationPresenter.swift in Sources */,
 				F65680572670F64700266167 /* ActivitiesViewDelegate.swift in Sources */,
+				655A86DF26725CFF00425E5F /* LoginViewController.swift in Sources */,
 				72807EC0818E5653456CC9C0 /* SettingsViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

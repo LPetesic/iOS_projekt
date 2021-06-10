@@ -7,7 +7,7 @@
 
 import Foundation
 import UIKit
-
+import FirebaseAuth
 
 
 class NetworkService: NetworkingProtocol{
@@ -55,6 +55,24 @@ class NetworkService: NetworkingProtocol{
     }
     
     
+    
+    
+    //firebase login authentication
+    func validateLogin(email: String, pass: String, completionHandler: @escaping (Result<LoginResponse, RequestError>) -> Void){
+        
+        FirebaseAuth.Auth.auth().signIn(withEmail: email, password: pass, completion: { result, error in
+            guard error == nil else{
+                completionHandler(.failure(.clientError))
+                return
+            }
+            //login successful, go to main view
+            completionHandler(.success(LoginResponse(success: true)))
+        })
+    }
+    
+
+
+    
     // API Link: https://zenquotes.io
     public func fetchQuoteOfTheDay(completionHandler:@escaping (Result<[Quote], RequestError>) -> Void){
         guard let url = URL(string: "https://zenquotes.io/api/today") else{
@@ -66,4 +84,5 @@ class NetworkService: NetworkingProtocol{
         self.executeUrlRequest(request, completionHandler: completionHandler)
         
     }
+
 }

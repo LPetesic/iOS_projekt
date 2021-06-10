@@ -11,7 +11,9 @@ import UIKit
 protocol AppCoordinatorProtocol {
 
     func setStartScreen(in window: UIWindow?)
+    func setMainScreen()
     func showCreateActivityScreen()
+    
 }
 
 class AppCoordinator: AppCoordinatorProtocol {
@@ -20,13 +22,27 @@ class AppCoordinator: AppCoordinatorProtocol {
     private var tabbedController: UITabBarController!
     
     private var activitiesPresnter: ActivitiesPresenter?
+    
+
 
     init(navigationController: UINavigationController) {
         self.navigationController = navigationController
         self.tabbedController = UITabBarController()
+      
     }
-
-    func setStartScreen(in window: UIWindow?) {
+    
+    
+    func setStartScreen(in window: UIWindow?){
+        
+        let lvc = LoginViewController()
+        window?.rootViewController = lvc
+        window?.makeKeyAndVisible()
+    }
+ 
+  
+    
+    
+    func setMainScreen() {
         let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
         let activityRepository = ActivityDataRepository(context: context)
         let activityUseCase = ActivityUseCase(activityRepository: activityRepository)
@@ -71,8 +87,6 @@ class AppCoordinator: AppCoordinatorProtocol {
         ]
         tabbedController.selectedIndex = 2
 
-        window?.rootViewController = tabbedController
-        window?.makeKeyAndVisible()
 
     }
     
