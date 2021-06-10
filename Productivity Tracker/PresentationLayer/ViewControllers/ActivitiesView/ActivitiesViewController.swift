@@ -12,72 +12,34 @@ class ActivitiesViewController: UIViewController, UIGestureRecognizerDelegate {
     
     let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
     
-    var activitiesArray = [ActivityItem]()
     var tableView:UITableView!
 
    
-    private var router: AppCoordinatorProtocol!
+    private var presenter: ActivitiesPresenter!
     
-    convenience init(router: AppCoordinatorProtocol) {
+    convenience init(presenter: ActivitiesPresenter) {
         self.init()
-        self.router = router
+        self.presenter = presenter
         title = "Activities"
+        
+        self.presenter.setView(view: self)
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
  
         buildViews()
-        getItems()
+        presenter.getItems()
+        DispatchQueue.main.async {
+            self.tableView.reloadData()
+        }
         
        
     }
     
-    
-    
-    //Core Data
-    func getItems(){
-        do{
-            //fetch from cd and populate ActivitiesArray
-            activitiesArray = try context.fetch(ActivityItem.fetchRequest())
-            //reorder that array according to orderIDs
-            self.activitiesArray = self.activitiesArray.sorted(by: {$0.orderID < $1.orderID})
-            DispatchQueue.main.async {
-                self.tableView.reloadData()
-            }
-        } catch{
-            print("error")
-        }
-    }
-    
-    func createActivity(name:String){
-        let newActivity = ActivityItem(context:context)
-        newActivity.name = name
-        newActivity.score = 0
-        newActivity.createdAt = Date()
-        newActivity.orderID = Int64(activitiesArray.count)
-        do{
-            try context.save()
-            getItems()
-        }catch{
-            
-        }
-    }
-    
-    func deleteActivity(item: ActivityItem){
-        context.delete(item)
-        do{
-           try  context.save()
-            getItems()
-        }catch{
-        
-        }
-    }
-    
-    
   
     
-    //navigation Bar Buttons
+//MARK: - navigation Bar Buttons
     @objc func plusBarButtonPressed(){
         let alert = UIAlertController(title: "New activity", message: "Add new activity", preferredStyle: .alert)
         alert.addTextField(configurationHandler: nil)
@@ -86,7 +48,10 @@ class ActivitiesViewController: UIViewController, UIGestureRecognizerDelegate {
             guard let text = field?.text else{
                 return
             }
-            self.createActivity(name: text)
+            self.presenter.createActivity(name: text)
+            DispatchQueue.main.async {
+                self.tableView.reloadData()
+            }
             
         }))
         present(alert, animated: true, completion: nil)
@@ -99,24 +64,24 @@ class ActivitiesViewController: UIViewController, UIGestureRecognizerDelegate {
 }
 
 
-//table view Delegate Methods
+//MARK: - table view Delegate Methods
 extension ActivitiesViewController: UITableViewDelegate{
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
     }
 }
 
 
-//table view Data Source methods
+//MARK: - table view Data Source methods
 extension ActivitiesViewController: UITableViewDataSource{
 
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return activitiesArray.count
+        return presenter.activitiesArray.count
     }
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        activitiesArray[indexPath.row].setValue(indexPath.row, forKey: "orderID")
+        presenter.activitiesArray[indexPath.row].setValue(indexPath.row, forKey: "orderID")
         let cell = tableView.dequeueReusableCell(withIdentifier: "ActivityCell",for: indexPath)
-        cell.textLabel?.text = (activitiesArray[indexPath.row]).name
+        cell.textLabel?.text = (presenter.activitiesArray[indexPath.row]).name
         cell.textLabel?.textColor = .black
         cell.backgroundColor = .white
       
@@ -131,13 +96,13 @@ extension ActivitiesViewController: UITableViewDataSource{
     func tableView(_ tableView: UITableView, moveRowAt sourceIndexPath: IndexPath, to destinationIndexPath: IndexPath) {
         
         //change orderIds of switched activities
-        let srcOrderId = activitiesArray[sourceIndexPath.row].orderID
-        let destOrderId = activitiesArray[destinationIndexPath.row].orderID
-        activitiesArray[sourceIndexPath.row].orderID = destOrderId
-        activitiesArray[destinationIndexPath.row].orderID = srcOrderId
+        let srcOrderId = presenter.activitiesArray[sourceIndexPath.row].orderID
+        let destOrderId = presenter.activitiesArray[destinationIndexPath.row].orderID
+        presenter.activitiesArray[sourceIndexPath.row].orderID = destOrderId
+        presenter.activitiesArray[destinationIndexPath.row].orderID = srcOrderId
     
         //reorder array according to newly set orderIDs
-        self.activitiesArray = self.activitiesArray.sorted(by: {$0.orderID < $1.orderID})
+        presenter.activitiesArray = presenter.activitiesArray.sorted(by: {$0.orderID < $1.orderID})
         
         //save it to CD
         do{
@@ -150,8 +115,12 @@ extension ActivitiesViewController: UITableViewDataSource{
 
     func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
         if editingStyle == .delete{
-            deleteActivity(item: activitiesArray[indexPath.row])
-            tableView.deleteRows(at: [indexPath], with: .none)
+            self.presenter.deleteActivity(index: indexPath.row)
+            DispatchQueue.main.async {
+                self.tableView.reloadData()
+            }
+//            tableView.deleteRows(at: [indexPath], with: .none)
+            
         }
     }
 

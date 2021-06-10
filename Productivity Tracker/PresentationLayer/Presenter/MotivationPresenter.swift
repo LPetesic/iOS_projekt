@@ -10,8 +10,8 @@ import UIKit
 
 class MotivationPresenter {
     
-    private let nService : NetworkService
-    weak private var motivationViewDelegate : MotivationViewController?
+    private let nService: NetworkingProtocol
+    weak private var motivationViewDelegate: MotivationViewProtocol?
     
     init(networking: NetworkService) {
         self.nService = networking
@@ -21,25 +21,20 @@ class MotivationPresenter {
         self.motivationViewDelegate = motivationViewDelegate
     }
     
-
+    
     
     func getData(){
-        let request = nService.fetchQuoteOfTheDay()
-        nService.executeUrlRequest(request){ [self] (result : Result<[Quote], RequestError>) in
-            
+        nService.fetchQuoteOfTheDay{ [weak self] (result : Result<[Quote], RequestError>) in
+            guard let self = self else {
+                return
+            }
             switch result{
             case .failure(let error):
                 print(error)
-                motivationViewDelegate?.showError()
+                self.motivationViewDelegate?.showError()
             case .success(let value):
-                
-                motivationViewDelegate?.populateView(quote : value)
+                self.motivationViewDelegate?.populateView(quote : value)
             }
         }
-        
-        
-        
-        
-        
     }
 }

@@ -8,25 +8,25 @@
 
 import Foundation
 final class ActivityUseCase {
-
-   
-
+    
     private let activityRepository: ActivityRepositoryProtocol
     
     init(activityRepository: ActivityRepositoryProtocol) {
         self.activityRepository = activityRepository
     }
 
-    func refreshData() throws {
-        try activityRepository.fetchLocalData()
+
+    func getItems() throws -> [ActivityItem] {
+        try activityRepository.getItems()
+    }
+    
+    func createActivity(name:String){
+        activityRepository.createActivity(name: name)
+    }
+    
+    func deleteActivity(item: ActivityItem){
+        activityRepository.deleteActivity(item: item)
     }
 
-    func getActivities() -> [Activity] {
-        activityRepository.fetchLocalData()
-    }
-
-    func deleteRestaurant(withId id: Int) {
-        activityRepository.deleteLocalData(withId: id)
-    }
 
 }
