@@ -35,6 +35,7 @@ class CreateActivityViewController: UIViewController {
         
         buildViews()
         addConstraints()
+        self.hideKeyboardWhenTappedAround()
 
     }
     
@@ -47,6 +48,9 @@ class CreateActivityViewController: UIViewController {
         activityNameInput = UITextField()
         activityNameInput.backgroundColor = .white
         activityNameInput.layer.cornerRadius = 8
+        activityNameInput.textColor = .black
+        activityNameInput.autocapitalizationType = .none
+        activityNameInput.delegate = self
         
         createButton = UIButton()
         createButton.backgroundColor = .white
@@ -84,10 +88,24 @@ class CreateActivityViewController: UIViewController {
             make.centerX.equalToSuperview()
         }
     }
-    
-    
-    
 
-    
+}
 
+extension CreateActivityViewController {
+    func hideKeyboardWhenTappedAround() {
+        let tap: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(self.dismissKeyboard))
+        tap.cancelsTouchesInView = false
+        view.addGestureRecognizer(tap)
+    }
+
+    @objc func dismissKeyboard() {
+        view.endEditing(true)
+    }
+}
+
+extension CreateActivityViewController: UITextFieldDelegate {
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+         textField.resignFirstResponder()
+        return true
+    }
 }
