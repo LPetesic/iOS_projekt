@@ -42,12 +42,11 @@ class LoginViewController : UIViewController, LoginViewProtocol{
         passwordTextField.addTarget(self, action: #selector(didTapPasswordTextField), for: .editingDidBegin)
         
         
-        //if user is still logged in from last time
-        if FirebaseAuth.Auth.auth().currentUser != nil{
-            //MARK:- this doesn't work, when i try to initialize a router it returns nil
-            //fix if you know the solution 
-            self.router?.setMainScreen()
-        }
+        //MARK: - if user is still logged in from last time (disabled for testing)
+//        if FirebaseAuth.Auth.auth().currentUser != nil{
+//            //fix if you know the solution
+//            self.router.setMainScreen()
+//        }
         
         
         
@@ -104,9 +103,8 @@ class LoginViewController : UIViewController, LoginViewProtocol{
     func completed(){
         removeElements()
         DispatchQueue.main.asyncAfter(deadline: .now()+0.9) {
-            //MARK:- this doesn't work, when i try to initialize a router it returns nil
             //fix if you know the solution
-            self.router?.setMainScreen()
+            self.router.setMainScreen()
         }
         
     }

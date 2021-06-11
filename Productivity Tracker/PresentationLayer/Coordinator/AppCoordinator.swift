@@ -23,6 +23,8 @@ class AppCoordinator: AppCoordinatorProtocol {
     
     private var activitiesPresnter: ActivitiesPresenter?
     
+    private weak var window: UIWindow?
+    
 
 
     init(navigationController: UINavigationController) {
@@ -34,7 +36,9 @@ class AppCoordinator: AppCoordinatorProtocol {
     
     func setStartScreen(in window: UIWindow?){
         
-        let lvc = LoginViewController()
+        self.window = window
+        
+        let lvc = LoginViewController(router: self)
         window?.rootViewController = lvc
         window?.makeKeyAndVisible()
     }
@@ -86,6 +90,8 @@ class AppCoordinator: AppCoordinatorProtocol {
             settingsController
         ]
         tabbedController.selectedIndex = 2
+        window?.rootViewController = tabbedController
+        window?.makeKeyAndVisible()
 
 
     }
