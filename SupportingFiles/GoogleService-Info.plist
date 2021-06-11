@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>CLIENT_ID</key>
+	<string>201337349470-nl20gka1vhksbedcjrdmsh6pmekmiiru.apps.googleusercontent.com</string>
+	<key>REVERSED_CLIENT_ID</key>
+	<string>com.googleusercontent.apps.201337349470-nl20gka1vhksbedcjrdmsh6pmekmiiru</string>
+	<key>API_KEY</key>
+	<string>AIzaSyBge71NHFaN6Obrh5aggpnddUsA5fk13XI</string>
+	<key>GCM_SENDER_ID</key>
+	<string>201337349470</string>
+	<key>PLIST_VERSION</key>
+	<string>1</string>
+	<key>BUNDLE_ID</key>
+	<string>hr.fer.iosvjestina.afm.Productivity-Tracker</string>
+	<key>PROJECT_ID</key>
+	<string>emaillogin-41473</string>
+	<key>STORAGE_BUCKET</key>
+	<string>emaillogin-41473.appspot.com</string>
+	<key>IS_ADS_ENABLED</key>
+	<false></false>
+	<key>IS_ANALYTICS_ENABLED</key>
+	<false></false>
+	<key>IS_APPINVITE_ENABLED</key>
+	<true></true>
+	<key>IS_GCM_ENABLED</key>
+	<true></true>
+	<key>IS_SIGNIN_ENABLED</key>
+	<true></true>
+	<key>GOOGLE_APP_ID</key>
+	<string>1:201337349470:ios:8c1abc6918d2fdce9b9bcf</string>
+</dict>
+</plist>

@@ -10,7 +10,7 @@ import Foundation
 final class ActivityUseCase {
     
     private let activityRepository: ActivityRepositoryProtocol
-    
+
     init(activityRepository: ActivityRepositoryProtocol) {
         self.activityRepository = activityRepository
     }
