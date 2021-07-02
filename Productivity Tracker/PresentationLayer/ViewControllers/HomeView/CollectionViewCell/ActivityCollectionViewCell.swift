@@ -22,8 +22,8 @@ class ActivityCollectionViewCell: UICollectionViewCell{
     
  
     
-    func populateCell(with cell: ActivityItem){
-        nameLabel.text = cell.name
+    func populateCell(with cell: ActivityScore){
+        nameLabel.text = cell.activityItem?.name
         scoreLabel.text = ("\(cell.score)")
     }
 }

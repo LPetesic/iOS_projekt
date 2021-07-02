@@ -7,7 +7,9 @@
 
 protocol ActivityRepositoryProtocol {
     func getItems() throws ->  [ActivityItem]
-    func createActivity(name:String)
+    func createActivity(name:String, maxGrade:Int)
     func deleteActivity(item: ActivityItem)
+    func getOrCreateToday() throws ->  [ActivityScore]
+    func updateScore(score: ActivityScore) throws -> Void
 
 }

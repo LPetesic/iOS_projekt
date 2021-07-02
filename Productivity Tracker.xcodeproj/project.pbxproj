@@ -36,8 +36,6 @@
 		656944EB267087650034D52C /* SettingsPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 656944EA267087650034D52C /* SettingsPresenter.swift */; };
 		656944ED2670929F0034D52C /* HomeViewController+Design.swift in Sources */ = {isa = PBXBuildFile; fileRef = 656944EC2670929F0034D52C /* HomeViewController+Design.swift */; };
 		656944EF267093440034D52C /* ActivityCollectionViewCell+Design.swift in Sources */ = {isa = PBXBuildFile; fileRef = 656944EE267093440034D52C /* ActivityCollectionViewCell+Design.swift */; };
-		65C804432654F222008988F5 /* ActivityItem+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65C804412654F222008988F5 /* ActivityItem+CoreDataClass.swift */; };
-		65C804442654F222008988F5 /* ActivityItem+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65C804422654F222008988F5 /* ActivityItem+CoreDataProperties.swift */; };
 		728077366ADA2B308E3C0BA0 /* ActivitiesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7280799B0B385475E2E1A51A /* ActivitiesViewController.swift */; };
 		7280789EB48A7D9F15DD7643 /* MotivationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72807D6EE4BE58362C400579 /* MotivationViewController.swift */; };
 		72807905F267C69539D692D7 /* OverviewViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 728077C3571B6A7AACCEE60E /* OverviewViewController.swift */; };
@@ -54,6 +52,10 @@
 		F6B5AD18264C947D005B3CCC /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F6B5AD16264C947D005B3CCC /* LaunchScreen.storyboard */; };
 		F6B5AD21264C94BE005B3CCC /* AppCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6B5AD20264C94BE005B3CCC /* AppCoordinator.swift */; };
 		F6B5AD26264C96AA005B3CCC /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6B5AD25264C96AA005B3CCC /* HomeViewController.swift */; };
+		F6B9B53F268E0D2B004EFD92 /* ActivityItem+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6B9B53B268E0D2B004EFD92 /* ActivityItem+CoreDataClass.swift */; };
+		F6B9B540268E0D2B004EFD92 /* ActivityItem+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6B9B53C268E0D2B004EFD92 /* ActivityItem+CoreDataProperties.swift */; };
+		F6B9B541268E0D2B004EFD92 /* ActivityScore+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6B9B53D268E0D2B004EFD92 /* ActivityScore+CoreDataClass.swift */; };
+		F6B9B542268E0D2B004EFD92 /* ActivityScore+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6B9B53E268E0D2B004EFD92 /* ActivityScore+CoreDataProperties.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -87,8 +89,6 @@
 		656944EA267087650034D52C /* SettingsPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsPresenter.swift; sourceTree = "<group>"; };
 		656944EC2670929F0034D52C /* HomeViewController+Design.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "HomeViewController+Design.swift"; sourceTree = "<group>"; };
 		656944EE267093440034D52C /* ActivityCollectionViewCell+Design.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ActivityCollectionViewCell+Design.swift"; sourceTree = "<group>"; };
-		65C804412654F222008988F5 /* ActivityItem+CoreDataClass.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "ActivityItem+CoreDataClass.swift"; sourceTree = "<group>"; };
-		65C804422654F222008988F5 /* ActivityItem+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "ActivityItem+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		678F7923EE116254B419D0B1 /* Pods-Productivity Tracker.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Productivity Tracker.release.xcconfig"; path = "Target Support Files/Pods-Productivity Tracker/Pods-Productivity Tracker.release.xcconfig"; sourceTree = "<group>"; };
 		728077C3571B6A7AACCEE60E /* OverviewViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OverviewViewController.swift; sourceTree = "<group>"; };
 		7280799B0B385475E2E1A51A /* ActivitiesViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ActivitiesViewController.swift; sourceTree = "<group>"; };
@@ -108,6 +108,10 @@
 		F6B5AD19264C947D005B3CCC /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		F6B5AD20264C94BE005B3CCC /* AppCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppCoordinator.swift; sourceTree = "<group>"; };
 		F6B5AD25264C96AA005B3CCC /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
+		F6B9B53B268E0D2B004EFD92 /* ActivityItem+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ActivityItem+CoreDataClass.swift"; sourceTree = "<group>"; };
+		F6B9B53C268E0D2B004EFD92 /* ActivityItem+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ActivityItem+CoreDataProperties.swift"; sourceTree = "<group>"; };
+		F6B9B53D268E0D2B004EFD92 /* ActivityScore+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ActivityScore+CoreDataClass.swift"; sourceTree = "<group>"; };
+		F6B9B53E268E0D2B004EFD92 /* ActivityScore+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ActivityScore+CoreDataProperties.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -156,8 +160,10 @@
 		6519EA3426544D8C00ECF84F /* Model */ = {
 			isa = PBXGroup;
 			children = (
-				65C804412654F222008988F5 /* ActivityItem+CoreDataClass.swift */,
-				65C804422654F222008988F5 /* ActivityItem+CoreDataProperties.swift */,
+				F6B9B53B268E0D2B004EFD92 /* ActivityItem+CoreDataClass.swift */,
+				F6B9B53C268E0D2B004EFD92 /* ActivityItem+CoreDataProperties.swift */,
+				F6B9B53D268E0D2B004EFD92 /* ActivityScore+CoreDataClass.swift */,
+				F6B9B53E268E0D2B004EFD92 /* ActivityScore+CoreDataProperties.swift */,
 				650293252655B2A700EC5585 /* ActivityCoreDataSourceProtocol.swift */,
 				654501212654671200F31431 /* Activity.swift */,
 				650293282655B4F500EC5585 /* ActivityCoreDataSource.swift */,
@@ -472,6 +478,7 @@
 				F6B5AD09264C947C005B3CCC /* AppDelegate.swift in Sources */,
 				F656805B26710EA600266167 /* CreateActivityViewController.swift in Sources */,
 				656944E92670875C0034D52C /* ActivitiesPresenter.swift in Sources */,
+				F6B9B541268E0D2B004EFD92 /* ActivityScore+CoreDataClass.swift in Sources */,
 				650293292655B4F500EC5585 /* ActivityCoreDataSource.swift in Sources */,
 				F65680592670F66D00266167 /* ActivitiesViewController+Delegate.swift in Sources */,
 				F6B5AD21264C94BE005B3CCC /* AppCoordinator.swift in Sources */,
@@ -485,6 +492,7 @@
 				6502932026553D2000EC5585 /* ActivityRepositoryProtocol.swift in Sources */,
 				6502931C26553CA200EC5585 /* ActivityUseCase.swift in Sources */,
 				656944DE2670848F0034D52C /* MotivationViewProtocol.swift in Sources */,
+				F6B9B542268E0D2B004EFD92 /* ActivityScore+CoreDataProperties.swift in Sources */,
 				F6B5AD26264C96AA005B3CCC /* HomeViewController.swift in Sources */,
 				656944CB266FE3D40034D52C /* SettingsViewController+Design.swift in Sources */,
 				7280789EB48A7D9F15DD7643 /* MotivationViewController.swift in Sources */,
@@ -499,17 +507,17 @@
 				72807905F267C69539D692D7 /* OverviewViewController.swift in Sources */,
 				652CDEE7267297D400A7BE2F /* LoginViewProtocol.swift in Sources */,
 				728077366ADA2B308E3C0BA0 /* ActivitiesViewController.swift in Sources */,
-				65C804442654F222008988F5 /* ActivityItem+CoreDataProperties.swift in Sources */,
 				650293232655B0F700EC5585 /* ActivityDataRepository.swift in Sources */,
 				652CDEE92672A10F00A7BE2F /* LoginResponse.swift in Sources */,
 				656944E72670874D0034D52C /* HomeViewPresenter.swift in Sources */,
 				654501222654671200F31431 /* Activity.swift in Sources */,
-				65C804432654F222008988F5 /* ActivityItem+CoreDataClass.swift in Sources */,
+				F6B9B53F268E0D2B004EFD92 /* ActivityItem+CoreDataClass.swift in Sources */,
 				656944EB267087650034D52C /* SettingsPresenter.swift in Sources */,
 				F65680552670CA4800266167 /* MotivationViewController+Delegate.swift in Sources */,
 				650293262655B2A700EC5585 /* ActivityCoreDataSourceProtocol.swift in Sources */,
 				656944DC2670839E0034D52C /* MotivationPresenter.swift in Sources */,
 				F65680572670F64700266167 /* ActivitiesViewDelegate.swift in Sources */,
+				F6B9B540268E0D2B004EFD92 /* ActivityItem+CoreDataProperties.swift in Sources */,
 				655A86DF26725CFF00425E5F /* LoginViewController.swift in Sources */,
 				72807EC0818E5653456CC9C0 /* SettingsViewController.swift in Sources */,
 			);
@@ -652,7 +660,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = C7L62PRT2R;
+				DEVELOPMENT_TEAM = TK9YSJWKU6;
 				INFOPLIST_FILE = "Productivity Tracker/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 14.1;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -673,7 +681,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = C7L62PRT2R;
+				DEVELOPMENT_TEAM = TK9YSJWKU6;
 				INFOPLIST_FILE = "Productivity Tracker/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 14.1;
 				LD_RUNPATH_SEARCH_PATHS = (

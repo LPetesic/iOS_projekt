@@ -12,7 +12,7 @@ class HomePresenter {
     private var activityUseCase: ActivityUseCase!
     
     //array of Activity items
-    var activitiesArray = [ActivityItem]()
+    var activitiesArray = [ActivityScore]()
     
     convenience init(router: AppCoordinatorProtocol, activityUseCase: ActivityUseCase){
         self.init()
@@ -22,12 +22,16 @@ class HomePresenter {
     
     func getItems(){
         do{
-            activitiesArray = try activityUseCase.getItems()
+            activitiesArray = try activityUseCase.getOrCreateToday()
             //reorder activities by their orderId
-            activitiesArray = activitiesArray.sorted(by: {$0.orderID < $1.orderID})
+            activitiesArray = activitiesArray.sorted(by: {$0.activityItem!.orderID < $1.activityItem!.orderID})
         } catch{
             print(error)
         }
+    }
+    
+    func updateScore(score: ActivityScore) throws {
+        try activityUseCase.updateScore(score: score)
     }
 }
 

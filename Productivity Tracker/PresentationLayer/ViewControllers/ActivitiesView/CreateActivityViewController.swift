@@ -25,7 +25,7 @@ class CreateActivityViewController: UIViewController {
     @objc func createActivity(_ sender: Any){
         guard let name = activityNameInput.text else {return}
         if (name.count < 1) {return}
-        presenter.createActivity(name: name)
+        presenter.createActivity(name: name, maxGrade: 2) // this 5 can be changed to read a slider if we want to have this set by the user
         presenter.refreshList()
         self.dismiss(animated: true, completion: nil)
     }

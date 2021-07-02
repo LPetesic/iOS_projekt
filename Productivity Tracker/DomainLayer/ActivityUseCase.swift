@@ -20,12 +20,20 @@ final class ActivityUseCase {
         try activityRepository.getItems()
     }
     
-    func createActivity(name:String){
-        activityRepository.createActivity(name: name)
+    func createActivity(name:String, maxGrade:Int){
+        activityRepository.createActivity(name: name, maxGrade: maxGrade)
     }
     
     func deleteActivity(item: ActivityItem){
         activityRepository.deleteActivity(item: item)
+    }
+    
+    func getOrCreateToday() throws -> [ActivityScore] {
+        try activityRepository.getOrCreateToday()
+    }
+    
+    func updateScore(score: ActivityScore) throws {
+        try activityRepository.updateScore(score: score)
     }
 
 
