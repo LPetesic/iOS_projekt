@@ -57,6 +57,7 @@ class ActivityDataRepository: ActivityRepositoryProtocol {
                 newSocre.activityItem = item
                 newSocre.day = date
                 newSocre.score = 0
+                // for dummy data: newSocre.score = Int32(Int.random(in: 1...Int(newSocre.activityItem!.maxGrade)))
                 try context.save()
                 scores.append(newSocre)
                 continue
@@ -76,6 +77,7 @@ class ActivityDataRepository: ActivityRepositoryProtocol {
             newSocre.activityItem = item
             newSocre.day = date
             newSocre.score = 0
+            // for dummy data: newSocre.score = Int32(Int.random(in: 1...Int(newSocre.activityItem!.maxGrade)))
             try context.save()
             scores.append(newSocre)
         }
