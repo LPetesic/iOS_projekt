@@ -35,6 +35,10 @@ final class ActivityUseCase {
     func updateScore(score: ActivityScore) throws {
         try activityRepository.updateScore(score: score)
     }
+    
+    func getThisWeek() -> [Date: [ActivityScore]] {
+        return activityRepository.getThisWeek()
+    }
 
 
 }
