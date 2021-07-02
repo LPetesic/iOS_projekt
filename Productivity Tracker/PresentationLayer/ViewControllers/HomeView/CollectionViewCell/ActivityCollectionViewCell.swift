@@ -24,6 +24,6 @@ class ActivityCollectionViewCell: UICollectionViewCell{
     
     func populateCell(with cell: ActivityScore){
         nameLabel.text = cell.activityItem?.name
-        scoreLabel.text = ("\(cell.score)")
+        scoreLabel.text = ("\(cell.score)/\(cell.activityItem!.maxGrade)")
     }
 }

@@ -11,8 +11,6 @@ import CoreData
 
 class HomeViewController: UIViewController {
     
-    private let MAGIC_NUMBER = 6
-    
     //collection view
     var collectionView : UICollectionView!
     let spacing:CGFloat = 20.0

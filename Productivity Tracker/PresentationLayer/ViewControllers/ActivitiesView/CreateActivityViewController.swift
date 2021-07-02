@@ -14,6 +14,8 @@ class CreateActivityViewController: UIViewController {
     private var titleLabel: UILabel!
     private var activityNameInput: UITextField!
     private var createButton: UIButton!
+    private var sliderLabel: UILabel!
+    private var maxSlider: UISlider!
     
     convenience init(presenter: ActivitiesPresenter) {
         self.init()
@@ -25,9 +27,16 @@ class CreateActivityViewController: UIViewController {
     @objc func createActivity(_ sender: Any){
         guard let name = activityNameInput.text else {return}
         if (name.count < 1) {return}
-        presenter.createActivity(name: name, maxGrade: 2) // this 5 can be changed to read a slider if we want to have this set by the user
+        presenter.createActivity(name: name, maxGrade: Int(round(maxSlider.value)))
         presenter.refreshList()
         self.dismiss(animated: true, completion: nil)
+    }
+    
+    @objc func sliderValueDidChange(_ sender:UISlider!)
+    {
+        sender.value = round(sender.value)
+        sliderLabel.text = "Max score for this activity: \(Int(sender.value))"
+        
     }
 
     override func viewDidLoad() {
@@ -59,8 +68,21 @@ class CreateActivityViewController: UIViewController {
         createButton.layer.cornerRadius = 8
         
         createButton.addTarget(self, action: #selector(self.createActivity), for: .touchUpInside)
-
         
+        sliderLabel = UILabel()
+        sliderLabel.text = "Max score for this activity: 5"
+        sliderLabel.textColor = .white
+        
+        maxSlider = UISlider()
+        maxSlider.minimumValue = 1
+        maxSlider.maximumValue = 10
+        maxSlider.value = 5
+        maxSlider.isContinuous = false
+        
+        maxSlider.addTarget(self, action: #selector(self.sliderValueDidChange(_:)), for: .valueChanged)
+
+        view.addSubview(sliderLabel)
+        view.addSubview(maxSlider)
         view.addSubview(titleLabel)
         view.addSubview(activityNameInput)
         view.addSubview(createButton)
@@ -81,12 +103,28 @@ class CreateActivityViewController: UIViewController {
             make.centerX.equalToSuperview()
         }
         
+        sliderLabel.snp.makeConstraints { make in
+            make.width.equalToSuperview().multipliedBy(0.8)
+            make.height.equalTo(45)
+            make.top.equalToSuperview().offset(240)
+            make.centerX.equalToSuperview()
+        }
+        
+        maxSlider.snp.makeConstraints { make in
+            make.width.equalToSuperview().multipliedBy(0.8)
+            make.height.equalTo(45)
+            make.top.equalToSuperview().offset(280)
+            make.centerX.equalToSuperview()
+        }
+        
         createButton.snp.makeConstraints { make in
             make.width.equalToSuperview().multipliedBy(0.8)
             make.height.equalTo(45)
             make.bottom.equalToSuperview().offset(-80)
             make.centerX.equalToSuperview()
         }
+        
+        
     }
 
 }
