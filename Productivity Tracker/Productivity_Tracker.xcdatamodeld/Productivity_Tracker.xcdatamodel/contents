@@ -5,9 +5,15 @@
         <attribute name="maxGrade" optional="YES" attributeType="Integer 32" defaultValueString="0" usesScalarValueType="YES"/>
         <attribute name="name" optional="YES" attributeType="String"/>
         <attribute name="orderID" optional="YES" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES"/>
+        <relationship name="activityScores" optional="YES" toMany="YES" deletionRule="Cascade" destinationEntity="ActivityScore" inverseName="activityItem" inverseEntity="ActivityScore"/>
+    </entity>
+    <entity name="ActivityScore" representedClassName="ActivityScore" syncable="YES">
+        <attribute name="day" optional="YES" attributeType="Date" usesScalarValueType="NO"/>
         <attribute name="score" optional="YES" attributeType="Integer 32" defaultValueString="0" usesScalarValueType="YES"/>
+        <relationship name="activityItem" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="ActivityItem" inverseName="activityScores" inverseEntity="ActivityItem"/>
     </entity>
     <elements>
         <element name="ActivityItem" positionX="-63" positionY="-18" width="128" height="104"/>
+        <element name="ActivityScore" positionX="-54" positionY="27" width="128" height="74"/>
     </elements>
 </model>

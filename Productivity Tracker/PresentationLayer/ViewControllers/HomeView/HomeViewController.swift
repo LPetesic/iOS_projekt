@@ -11,8 +11,6 @@ import CoreData
 
 class HomeViewController: UIViewController {
     
-    private let MAGIC_NUMBER = 6
-    
     //collection view
     var collectionView : UICollectionView!
     let spacing:CGFloat = 20.0
@@ -20,9 +18,6 @@ class HomeViewController: UIViewController {
     
     var notificationLabel = UILabel()
     var arrowImage = UIImageView()
-    
-    //core data context
-    let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
     
     
     private var presenter: HomePresenter!
@@ -110,9 +105,8 @@ extension HomeViewController: UICollectionViewDataSource{
 //delegate metode
 extension HomeViewController: UICollectionViewDelegate{
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        presenter.activitiesArray[indexPath.row].score = (presenter.activitiesArray[indexPath.row].score + 1) % Int32(MAGIC_NUMBER)
         do{
-            try context.save()
+            try presenter.updateScore(score: presenter.activitiesArray[indexPath.row])
             presenter.getItems()
         }catch{
             

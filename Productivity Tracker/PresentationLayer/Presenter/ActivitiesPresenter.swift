@@ -9,7 +9,7 @@ import Foundation
 import UIKit
 
 protocol CreateActiviyPresenter: AnyObject {
-    func createActivity(name:String)
+    func createActivity(name:String, maxGrade:Int)
 }
 
 class ActivitiesPresenter: CreateActiviyPresenter {
@@ -39,8 +39,8 @@ class ActivitiesPresenter: CreateActiviyPresenter {
         }
     }
     
-    func createActivity(name:String){
-        self.activityUseCase.createActivity(name: name)
+    func createActivity(name:String, maxGrade:Int){
+        self.activityUseCase.createActivity(name: name, maxGrade: maxGrade)
         self.getItems()
     }
     
