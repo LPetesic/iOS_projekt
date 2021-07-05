@@ -8,6 +8,7 @@
 import UIKit
 import SnapKit
 import CoreData
+import UserNotifications
 
 class HomeViewController: UIViewController {
     
@@ -19,6 +20,8 @@ class HomeViewController: UIViewController {
     var notificationLabel = UILabel()
     var arrowImage = UIImageView()
     
+    let notificationCenter = UNUserNotificationCenter.current()
+
     
     private var presenter: HomePresenter!
     
@@ -32,7 +35,14 @@ class HomeViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         self.view.backgroundColor = .white
-        
+
+        notificationCenter.requestAuthorization(options: [.alert, .sound]) { (permissionGranted, error) in
+            if(!permissionGranted){
+                print("Permission denied")
+            }else{
+                self.scheduleNotification()
+            }
+        }
        
         createCollectionView()
         presenter.getItems()
@@ -72,6 +82,33 @@ class HomeViewController: UIViewController {
                         self.view.layoutIfNeeded()
                        }
         )
+    }
+    
+    
+    //osigurava pojavljivanje podsjetnika za korištenje aplikacije svaki dan u 12:00
+    func scheduleNotification(){
+        notificationCenter.getNotificationSettings { settings in
+        let   notificationContent = UNMutableNotificationContent()
+            if (settings.authorizationStatus == .authorized){
+              
+                notificationContent.title = "Hey there, don't forget about your obligations!"
+                notificationContent.body = "Make sure you get your daily dose of motivation and crush the rest of the day!"
+                notificationContent.badge = NSNumber(value: 1)
+                notificationContent.sound = .default
+            }
+           
+                            
+            var datComp = DateComponents()
+            datComp.hour = 16
+            datComp.minute = 02
+            let trigger = UNCalendarNotificationTrigger(dateMatching: datComp, repeats: true)
+            let request = UNNotificationRequest(identifier: "ID", content: notificationContent, trigger: trigger)
+                            UNUserNotificationCenter.current().add(request) { (error : Error?) in
+                                if let theError = error {
+                                    print(theError.localizedDescription)
+                                }
+                            }
+        }
     }
 
  

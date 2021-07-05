@@ -6,13 +6,20 @@
 //
 
 import UIKit
-import SnapKit
+import Charts
+import  UserNotifications
 
 class OverviewViewController: UIViewController {
 
-    private var titleLabel: UILabel!
-    private var presenter: OverviewPresenter!
-    private var weekLabel: UILabel! // TEMP
+    var titleLabel: UILabel!
+    var presenter: OverviewPresenter!
+    var barChart = BarChartView()
+    var dict = Dictionary<Date, [ActivityScore]>()
+    var colorArray = [UIColor]()
+    let date = Date()
+    let dateFormatter = DateFormatter()
+    var days = [String]()
+    var meditiranje = UILabel()
 
     convenience init(presenter: OverviewPresenter) {
         self.init()
@@ -22,65 +29,81 @@ class OverviewViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
         buildViews()
-        addConstraints()
+        
+        
+        let calendar = Calendar(identifier: .gregorian)
+        days = calendar.weekdaySymbols
+        print(days)
+        dateFormatter.dateFormat = "EEE"
+        let dayInWeek = dateFormatter.string(from: date)
+    print(dayInWeek)
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        print(presenter.getThisWeek())
-        weekLabel.text = stryngifyDict(dict: presenter.getThisWeek())
+        
+        dict = presenter.getThisWeek()
+        createChart()
+
     }
     
-    func stryngifyDict(dict: [Date: [ActivityScore]]) -> String {
-        let formatter = DateFormatter()
-        formatter.dateFormat = "d MMM y"
-        var res = ""
+    
+    func createChart() {
+
+        //configure the axis
+        barChart.leftAxis.labelTextColor = .black
+        barChart.leftAxis.gridColor = .black
+        barChart.xAxis.labelTextColor = .black
+        barChart.xAxis.gridColor = .black
+        
+        
+        barChart.rightAxis.enabled = false
+        barChart.xAxis.labelPosition = .bottom
+
+        barChart.leftAxis.granularityEnabled = true
+        barChart.leftAxis.granularity = 1.0
+        barChart.isUserInteractionEnabled = false
+        
+        //configure legend
+        barChart.legend.enabled = false
+        
+        
+        //supply data
+        var entries = [BarChartDataEntry]()
+         var i = 0
         for day in Array(dict.keys).sorted(by: <){
-            res += "\(formatter.string(from: day)): ["
-            for score in dict[day, default: []] {
-                res += "\(score.activityItem!.name ?? ""): \(score.score), "
+            let color = UIColor.systemGreen
+            for s in dict[day, default: []]{
+                entries.append(BarChartDataEntry(x: Double(i), y: Double(Int.random(in: 0..<3))))
+                colorArray.append(color)
+                i += 1
             }
-            res += "]\n\n"
-            
+           
         }
-        return res
+
+        barChart.xAxis.valueFormatter = IndexAxisValueFormatter(values: days)
+        barChart.xAxis.granularity = 1
+        let chartDataSet = BarChartDataSet(entries: entries)
+        chartDataSet.colors = colorArray
+
+        let chartData = BarChartData(dataSet: chartDataSet)
+        chartData.setDrawValues(false)
+        barChart.data = chartData
+    
     }
+    
+    
+    
 
 
-    private func buildViews() {
-        view.backgroundColor = .orange
-
-        titleLabel = UILabel()
-        titleLabel.text = "Overview"
-        titleLabel.textAlignment = .center
-        
-        weekLabel = UILabel()
-        weekLabel.text = stryngifyDict(dict: presenter.getThisWeek())
-        weekLabel.textColor = .black
-        weekLabel.contentMode = .scaleToFill
-        weekLabel.numberOfLines = 24
-        
-
-        view.addSubview(titleLabel)
-        view.addSubview(weekLabel)
-    }
-
-    private func addConstraints() {
-        titleLabel.snp.makeConstraints { make in
-            make.width.equalToSuperview().multipliedBy(0.8)
-            make.height.equalTo(45)
-            make.centerX.equalToSuperview()
-            make.top.equalToSuperview().offset(80)
-        }
-        
-        weekLabel.snp.makeConstraints { make in
-            make.width.equalToSuperview().multipliedBy(0.8)
-            make.centerX.equalToSuperview()
-            make.centerY.equalToSuperview()
-            make.height.equalToSuperview().multipliedBy(0.9)
-        }
-
+   
+}
+extension UIColor {
+    static var random: UIColor {
+        return UIColor(red: .random(in: 0...1),
+                       green: .random(in: 0...1),
+                       blue: .random(in: 0...1),
+                       alpha: 1.0)
     }
 }
