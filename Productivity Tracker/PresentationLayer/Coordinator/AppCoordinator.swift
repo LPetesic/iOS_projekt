@@ -52,7 +52,9 @@ class AppCoordinator: AppCoordinatorProtocol {
         let activityUseCase = ActivityUseCase(activityRepository: activityRepository)
 
         let motivationController = MotivationViewController(router: self)
-        let overviewController = OverviewViewController(router: self)
+//MARK: - overview view
+        let overviewPresenter = OverviewPresenter(router: self, activityUseCase: activityUseCase)
+        let overviewController = OverviewViewController(presenter: overviewPresenter)
         
 //MARK: - home view
         let homePresenter = HomePresenter(router: self, activityUseCase: activityUseCase)

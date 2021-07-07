@@ -8,10 +8,9 @@
 import UIKit
 import SnapKit
 import CoreData
+import UserNotifications
 
 class HomeViewController: UIViewController {
-    
-    private let MAGIC_NUMBER = 6
     
     //collection view
     var collectionView : UICollectionView!
@@ -21,9 +20,8 @@ class HomeViewController: UIViewController {
     var notificationLabel = UILabel()
     var arrowImage = UIImageView()
     
-    //core data context
-    let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
-    
+    let notificationCenter = UNUserNotificationCenter.current()
+
     
     private var presenter: HomePresenter!
     
@@ -37,7 +35,14 @@ class HomeViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         self.view.backgroundColor = .white
-        
+
+        notificationCenter.requestAuthorization(options: [.alert, .sound]) { (permissionGranted, error) in
+            if(!permissionGranted){
+                print("Permission denied")
+            }else{
+                self.scheduleNotification()
+            }
+        }
        
         createCollectionView()
         presenter.getItems()
@@ -78,6 +83,33 @@ class HomeViewController: UIViewController {
                        }
         )
     }
+    
+    
+    //osigurava pojavljivanje podsjetnika za korištenje aplikacije svaki dan u 12:00
+    func scheduleNotification(){
+        notificationCenter.getNotificationSettings { settings in
+        let   notificationContent = UNMutableNotificationContent()
+            if (settings.authorizationStatus == .authorized){
+              
+                notificationContent.title = "Hey there, don't forget about your obligations!"
+                notificationContent.body = "Make sure you get your daily dose of motivation and crush the rest of the day!"
+                notificationContent.badge = NSNumber(value: 1)
+                notificationContent.sound = .default
+            }
+           
+                            
+            var datComp = DateComponents()
+            datComp.hour = 16
+            datComp.minute = 02
+            let trigger = UNCalendarNotificationTrigger(dateMatching: datComp, repeats: true)
+            let request = UNNotificationRequest(identifier: "ID", content: notificationContent, trigger: trigger)
+                            UNUserNotificationCenter.current().add(request) { (error : Error?) in
+                                if let theError = error {
+                                    print(theError.localizedDescription)
+                                }
+                            }
+        }
+    }
 
  
 }
@@ -110,9 +142,8 @@ extension HomeViewController: UICollectionViewDataSource{
 //delegate metode
 extension HomeViewController: UICollectionViewDelegate{
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        presenter.activitiesArray[indexPath.row].score = (presenter.activitiesArray[indexPath.row].score + 1) % Int32(MAGIC_NUMBER)
         do{
-            try context.save()
+            try presenter.updateScore(score: presenter.activitiesArray[indexPath.row])
             presenter.getItems()
         }catch{
             

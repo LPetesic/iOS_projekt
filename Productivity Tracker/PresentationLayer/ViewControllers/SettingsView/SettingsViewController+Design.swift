@@ -18,15 +18,17 @@ extension SettingsViewController{
     }
     
     func loadElements(){
-        view.backgroundColor = .gray
+        view.backgroundColor = .white
         
         //username label
         usernameLabel.text = "Username"
         usernameLabel.font = UIFont(name: "Futura", size: 30)
+        usernameLabel.textColor = .black
         
         //name label
         nameLabel.text = "Pero Perić"
         nameLabel.font =  UIFont(name: "Futura", size: 40)
+        nameLabel.textColor = .black
         
         //logout button
         logOutButton.backgroundColor = .red
